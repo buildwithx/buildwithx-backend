@@ -4,14 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Current state
 
-This repo is at the **design-doc + scaffolding stage**. `README.md` describes the intended architecture, and `app/` contains the directory skeleton with empty `__init__.py` and stub module files, but no logic is implemented yet.
+The **auth feature is implemented** (register, login, refresh, logout, me). Other features (users, articles, comments, tags, media) are stubs. CI/CD is set up with GitHub Actions.
 
-- All files under `app/` are empty (0 bytes / just `pass`-able stubs).
-- No `requirements.txt`, `pyproject.toml`, or lockfile exists yet.
-- `.env` and `.env.local` are empty.
-- A `.venv/` (Python 3.14.3) is checked out but has no project dependencies installed.
-
-When asked to implement something, **scaffold the missing dependency manifest as part of the work** (the README pins the stack: FastAPI, Motor, Redis, Pydantic v2, argon2, pytest-asyncio, httpx) — don't assume `pip install` of a non-existent requirements file will work.
+- `pyproject.toml` with all dependencies and dev tools
+- `.venv/` with dependencies installed via `uv`
+- `.env` and `.env.local` exist (check for required env vars)
+- GitHub Actions CI: format → lint → typecheck → tests
 
 ## Architecture: feature-based modular
 
@@ -77,12 +75,23 @@ These are choices the README makes deliberately. Don't undo them without a reaso
 - API is versioned under `/api/v1`. Each feature's router is mounted under that prefix in `app/main.py`.
 - Errors use a typed `AppError` hierarchy serialized as `{code, message, details}` via a FastAPI exception handler registered in `core/exceptions.py`. Feature-specific errors (e.g. `ArticleNotFound`, `InvalidCredentials`) extend `AppError` in the feature's `exceptions.py`. **Do not raise bare `HTTPException` from services.**
 - Pydantic v2, with separate `*Create` / `*Update` / `*Read` schemas per resource in the feature's `schemas.py`.
-- Tests use `pytest-asyncio` + `httpx.AsyncClient` against an ephemeral Mongo via testcontainers; services are unit-tested against fake repositories. Co-locate tests with the feature (`app/features/articles/tests/`) rather than a global `tests/` tree.
+- Tests use `pytest-asyncio` + `httpx.AsyncClient` with `FakeRepository` fixtures (no Docker). Co-locate tests under `app/tests/`.
 - Healthcheck at `/healthz`; readiness probe must check Mongo + Redis.
 
 ## Commands
 
-No build/test/lint commands are wired up yet. When the project gets a `pyproject.toml` or `requirements.txt`, update this section with the actual invocations rather than guessing.
+```
+uv sync                     # install all deps
+uv run uvicorn app.main:app --reload  # dev server
+uv run ruff format .         # format
+uv run ruff check .          # lint
+uv run mypy app              # typecheck
+uv run pytest                # run all tests
+uv run pytest -k <name>      # run focused test
+uv run pre-commit run --all-files  # pre-commit hooks
+```
+
+Order: `ruff format` → `ruff check` → `mypy` → `pytest`
 
 ## graphify
 

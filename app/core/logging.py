@@ -42,6 +42,7 @@ Usage
 4. Exceptions: prefer `log.exception("...")` inside an `except` block — the
    traceback is captured automatically under the `exc_info` field.
 """
+
 from __future__ import annotations
 
 import json
@@ -55,12 +56,33 @@ _request_id_var: ContextVar[str | None] = ContextVar("request_id", default=None)
 
 # LogRecord attributes set by the logging module itself — anything outside this
 # set on a record was passed via `extra=` and should be surfaced in the JSON.
-_RESERVED_RECORD_ATTRS = frozenset({
-    "name", "msg", "args", "levelname", "levelno", "pathname", "filename",
-    "module", "exc_info", "exc_text", "stack_info", "lineno", "funcName",
-    "created", "msecs", "relativeCreated", "thread", "threadName",
-    "processName", "process", "message", "asctime", "taskName",
-})
+_RESERVED_RECORD_ATTRS = frozenset(
+    {
+        "name",
+        "msg",
+        "args",
+        "levelname",
+        "levelno",
+        "pathname",
+        "filename",
+        "module",
+        "exc_info",
+        "exc_text",
+        "stack_info",
+        "lineno",
+        "funcName",
+        "created",
+        "msecs",
+        "relativeCreated",
+        "thread",
+        "threadName",
+        "processName",
+        "process",
+        "message",
+        "asctime",
+        "taskName",
+    }
+)
 
 
 def set_request_id(request_id: str | None) -> Token[str | None]:
@@ -109,10 +131,19 @@ def setup_logging(level: str | int = "INFO") -> None:
     handler = logging.StreamHandler(sys.stdout)
     handler.setFormatter(JSONFormatter())
 
-    # Replace existing handlers so re-invocation (tests, reload) doesn't duplicate output.
+    # Replace existing handlers so re-invocation (tests, reload)
+    # doesn't duplicate output.
     for existing in list(root.handlers):
         root.removeHandler(existing)
     root.addHandler(handler)
+
+
+def configure_logging() -> None:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(name)s %(message)s",
+        handlers=[logging.StreamHandler(sys.stdout)],
+    )
 
 
 def get_logger(name: str) -> logging.Logger:

@@ -1,0 +1,631 @@
+{
+  "communities": {
+    "0": [
+      "articles_Exception",
+      "auth_dependencies_get_current_user",
+      "auth_dependencies_require_role",
+      "auth_exceptions_ForbiddenError",
+      "auth_exceptions_InvalidCredentials",
+      "auth_exceptions_InvalidToken",
+      "auth_exceptions_UserAlreadyExists",
+      "auth_models_UserDocument",
+      "auth_repository_AuthRepository",
+      "auth_schemas_UserRead",
+      "claude_md",
+      "concept_apperror_hierarchy",
+      "concept_author_snapshot_denormalization",
+      "concept_centralized_indexes",
+      "concept_cursor_pagination",
+      "concept_feature_modular_layout",
+      "concept_jwt_refresh_token_revocation",
+      "concept_router_service_repo_layering",
+      "db_indexes_create_indexes",
+      "db_indexes_py",
+      "db_mongo_get_database",
+      "db_mongo_py",
+      "features_auth_dependencies_py",
+      "readme",
+      "shared_object_id_PyObjectId",
+      "tests_conftest_FakeRepository"
+    ],
+    "1": [
+      "auth_models_userdocument",
+      "auth_schemas_loginrequest",
+      "auth_schemas_logoutrequest",
+      "auth_schemas_refreshrequest",
+      "auth_schemas_registerrequest",
+      "auth_schemas_userread",
+      "basehttpmiddleware",
+      "basemodel",
+      "core_request_id_py",
+      "core_request_id_requestidmiddleware",
+      "core_request_id_requestidmiddleware_dispatch",
+      "features_auth_models_py",
+      "features_auth_schemas_py",
+      "shared_object_id_get_pydantic_core_schema",
+      "shared_object_id_get_pydantic_json_schema",
+      "shared_object_id_py",
+      "shared_object_id_pyobjectid",
+      "shared_object_id_validate",
+      "str",
+      "tests_test_auth_register_py",
+      "tests_test_auth_register_test_register_duplicate_email",
+      "tests_test_auth_register_test_register_invalid_email",
+      "tests_test_auth_register_test_register_short_password",
+      "tests_test_auth_register_test_register_success"
+    ],
+    "2": [
+      "auth_dependencies_get_auth_service",
+      "auth_router_login",
+      "auth_router_logout",
+      "auth_router_me",
+      "auth_router_refresh",
+      "auth_router_register",
+      "auth_schemas_LoginRequest",
+      "auth_schemas_LogoutRequest",
+      "auth_schemas_RefreshRequest",
+      "auth_schemas_RegisterRequest",
+      "auth_schemas_TokenPair",
+      "auth_service_AuthService",
+      "db_redis_get_redis",
+      "db_redis_py",
+      "features_auth_router_py",
+      "shared_rate_limit_RateLimiter",
+      "test_auth_register",
+      "tests_conftest"
+    ],
+    "3": [
+      "auth_schemas_tokenpair",
+      "auth_service_authservice",
+      "auth_service_authservice_init",
+      "auth_service_authservice_login",
+      "auth_service_authservice_logout",
+      "auth_service_authservice_refresh",
+      "auth_service_authservice_register",
+      "core_security_create_access_token",
+      "core_security_create_refresh_token",
+      "core_security_create_token",
+      "core_security_decode_token",
+      "core_security_hash_password",
+      "core_security_py",
+      "core_security_tokentype",
+      "core_security_verify_password",
+      "tests_conftest_auth_service"
+    ],
+    "4": [
+      "apperror",
+      "auth_exceptions_forbiddenerror",
+      "auth_exceptions_forbiddenerror_init",
+      "auth_exceptions_invalidcredentials",
+      "auth_exceptions_invalidcredentials_init",
+      "auth_exceptions_invalidtoken",
+      "auth_exceptions_invalidtoken_init",
+      "auth_exceptions_useralreadyexists",
+      "auth_exceptions_useralreadyexists_init",
+      "core_exceptions_app_error_handler",
+      "core_exceptions_apperror",
+      "core_exceptions_apperror_init",
+      "core_exceptions_py",
+      "core_exceptions_register_exception_handlers",
+      "exception",
+      "features_auth_exceptions_py"
+    ],
+    "5": [
+      "articles_dependencies",
+      "articles_models",
+      "articles_repository",
+      "articles_router",
+      "articles_schemas",
+      "articles_service",
+      "tags_dependencies",
+      "tags_exceptions",
+      "tags_models",
+      "tags_repository",
+      "tags_router",
+      "tags_schemas",
+      "tags_service",
+      "users_models",
+      "users_schemas",
+      "users_service"
+    ],
+    "6": [
+      "app_core_config",
+      "app_core_exceptions",
+      "app_core_exceptions_app_error",
+      "app_core_security",
+      "app_features_auth_service",
+      "app_features_auth_service_login",
+      "app_features_auth_service_logout",
+      "app_features_auth_service_refresh",
+      "app_features_auth_service_register",
+      "app_main",
+      "app_main_healthcheck",
+      "app_main_lifespan",
+      "features_auth_service_py",
+      "main_py"
+    ],
+    "7": [
+      "tests_conftest_api_client",
+      "tests_conftest_fake_repository",
+      "tests_conftest_fakerepository",
+      "tests_conftest_fakerepository_create_user",
+      "tests_conftest_fakerepository_get_user_by_email",
+      "tests_conftest_fakerepository_get_user_by_id",
+      "tests_conftest_fakerepository_init",
+      "tests_conftest_fakerepository_revoke_refresh_token",
+      "tests_conftest_fakerepository_store_refresh_token",
+      "tests_conftest_fakerepository_validate_refresh_token",
+      "tests_conftest_py"
+    ],
+    "8": [
+      "core_logging_configure_logging",
+      "core_logging_get_logger",
+      "core_logging_get_request_id",
+      "core_logging_jsonformatter",
+      "core_logging_jsonformatter_format",
+      "core_logging_py",
+      "core_logging_rationale_1",
+      "core_logging_rationale_127",
+      "core_logging_reset_request_id",
+      "core_logging_set_request_id",
+      "core_logging_setup_logging"
+    ],
+    "9": [
+      "auth_repository_authrepository",
+      "auth_repository_authrepository_create_user",
+      "auth_repository_authrepository_get_user_by_email",
+      "auth_repository_authrepository_get_user_by_id",
+      "auth_repository_authrepository_init",
+      "auth_repository_authrepository_revoke_refresh_token",
+      "auth_repository_authrepository_store_refresh_token",
+      "auth_repository_authrepository_validate_refresh_token",
+      "core_security_hash_token",
+      "features_auth_repository_py"
+    ],
+    "10": [
+      "media_dependencies",
+      "media_exceptions",
+      "media_models",
+      "media_repository",
+      "media_router",
+      "media_schemas",
+      "media_service"
+    ],
+    "11": [
+      "app_core_logging",
+      "app_core_logging_json_formatter",
+      "app_core_logging_request_id_var",
+      "app_core_request_id"
+    ],
+    "12": [
+      "basesettings",
+      "core_config_get_settings",
+      "core_config_py",
+      "core_config_settings"
+    ],
+    "13": [
+      "shared_rate_limit_py",
+      "shared_rate_limit_ratelimiter",
+      "shared_rate_limit_ratelimiter_init",
+      "shared_rate_limit_ratelimiter_is_allowed"
+    ],
+    "14": [
+      "users_dependencies",
+      "users_exceptions",
+      "users_repository",
+      "users_router"
+    ],
+    "15": [
+      "shared_dependencies",
+      "shared_pagination"
+    ],
+    "16": [
+      "init_py"
+    ],
+    "17": [
+      "core_init_py"
+    ],
+    "18": [
+      "features_init_py"
+    ],
+    "19": [
+      "features_comments_service_py"
+    ],
+    "20": [
+      "features_comments_models_py"
+    ],
+    "21": [
+      "features_comments_init_py"
+    ],
+    "22": [
+      "features_comments_schemas_py"
+    ],
+    "23": [
+      "features_comments_exceptions_py"
+    ],
+    "24": [
+      "features_comments_router_py"
+    ],
+    "25": [
+      "features_comments_repository_py"
+    ],
+    "26": [
+      "features_comments_dependencies_py"
+    ],
+    "27": [
+      "features_auth_init_py"
+    ],
+    "28": [
+      "features_articles_service_py"
+    ],
+    "29": [
+      "features_articles_models_py"
+    ],
+    "30": [
+      "features_articles_init_py"
+    ],
+    "31": [
+      "features_articles_schemas_py"
+    ],
+    "32": [
+      "features_articles_exceptions_py"
+    ],
+    "33": [
+      "features_articles_router_py"
+    ],
+    "34": [
+      "features_articles_repository_py"
+    ],
+    "35": [
+      "features_articles_dependencies_py"
+    ],
+    "36": [
+      "features_tags_service_py"
+    ],
+    "37": [
+      "features_tags_models_py"
+    ],
+    "38": [
+      "features_tags_init_py"
+    ],
+    "39": [
+      "features_tags_schemas_py"
+    ],
+    "40": [
+      "features_tags_exceptions_py"
+    ],
+    "41": [
+      "features_tags_router_py"
+    ],
+    "42": [
+      "features_tags_repository_py"
+    ],
+    "43": [
+      "features_tags_dependencies_py"
+    ],
+    "44": [
+      "features_users_service_py"
+    ],
+    "45": [
+      "features_users_models_py"
+    ],
+    "46": [
+      "features_users_init_py"
+    ],
+    "47": [
+      "features_users_schemas_py"
+    ],
+    "48": [
+      "features_users_exceptions_py"
+    ],
+    "49": [
+      "features_users_router_py"
+    ],
+    "50": [
+      "features_users_repository_py"
+    ],
+    "51": [
+      "features_users_dependencies_py"
+    ],
+    "52": [
+      "features_media_service_py"
+    ],
+    "53": [
+      "features_media_models_py"
+    ],
+    "54": [
+      "features_media_init_py"
+    ],
+    "55": [
+      "features_media_schemas_py"
+    ],
+    "56": [
+      "features_media_exceptions_py"
+    ],
+    "57": [
+      "features_media_router_py"
+    ],
+    "58": [
+      "features_media_repository_py"
+    ],
+    "59": [
+      "features_media_dependencies_py"
+    ],
+    "60": [
+      "shared_init_py"
+    ],
+    "61": [
+      "shared_pagination_py"
+    ],
+    "62": [
+      "shared_dependencies_py"
+    ],
+    "63": [
+      "db_init_py"
+    ],
+    "64": [
+      "articles___init___"
+    ],
+    "65": [
+      "tags___init___"
+    ],
+    "66": [
+      "users___init___"
+    ],
+    "67": [
+      "media_init"
+    ],
+    "68": [
+      "shared_init"
+    ],
+    "69": [
+      "db_init"
+    ],
+    "70": [
+      "app_features_comments_service"
+    ],
+    "71": [
+      "app_features_comments_models"
+    ],
+    "72": [
+      "app_features_comments_schemas"
+    ],
+    "73": [
+      "app_features_comments_router"
+    ],
+    "74": [
+      "app_features_comments_repository"
+    ],
+    "75": [
+      "app_features_comments_dependencies"
+    ],
+    "76": [
+      "app_features_comments_exceptions"
+    ]
+  },
+  "cohesion": {
+    "0": 0.11692307692307692,
+    "1": 0.12318840579710146,
+    "2": 0.16993464052287582,
+    "3": 0.24166666666666667,
+    "4": 0.2,
+    "5": 0.14166666666666666,
+    "6": 0.21978021978021978,
+    "7": 0.2,
+    "8": 0.2,
+    "9": 0.24444444444444444,
+    "10": 0.5238095238095238,
+    "11": 0.8333333333333334,
+    "12": 0.6666666666666666,
+    "13": 0.5,
+    "14": 0.5,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0,
+    "47": 1.0,
+    "48": 1.0,
+    "49": 1.0,
+    "50": 1.0,
+    "51": 1.0,
+    "52": 1.0,
+    "53": 1.0,
+    "54": 1.0,
+    "55": 1.0,
+    "56": 1.0,
+    "57": 1.0,
+    "58": 1.0,
+    "59": 1.0,
+    "60": 1.0,
+    "61": 1.0,
+    "62": 1.0,
+    "63": 1.0,
+    "64": 1.0,
+    "65": 1.0,
+    "66": 1.0,
+    "67": 1.0,
+    "68": 1.0,
+    "69": 1.0,
+    "70": 1.0,
+    "71": 1.0,
+    "72": 1.0,
+    "73": 1.0,
+    "74": 1.0,
+    "75": 1.0,
+    "76": 1.0
+  },
+  "gods": [
+    {
+      "id": "auth_service_authservice",
+      "label": "AuthService",
+      "degree": 15
+    },
+    {
+      "id": "auth_repository_authrepository",
+      "label": "AuthRepository",
+      "degree": 12
+    },
+    {
+      "id": "auth_dependencies_get_current_user",
+      "label": "get_current_user()",
+      "degree": 11
+    },
+    {
+      "id": "tests_conftest_fakerepository",
+      "label": "FakeRepository",
+      "degree": 10
+    },
+    {
+      "id": "app_features_auth_service",
+      "label": "Authentication Service",
+      "degree": 10
+    },
+    {
+      "id": "shared_object_id_pyobjectid",
+      "label": "PyObjectId",
+      "degree": 9
+    },
+    {
+      "id": "auth_dependencies_get_auth_service",
+      "label": "get_auth_service()",
+      "degree": 8
+    },
+    {
+      "id": "app_core_config",
+      "label": "Application Settings Configuration",
+      "degree": 8
+    },
+    {
+      "id": "app_core_security",
+      "label": "Security Utilities (JWT & Password Hashing)",
+      "degree": 8
+    },
+    {
+      "id": "core_exceptions_apperror",
+      "label": "AppError",
+      "degree": 7
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Feature-based modular architecture",
+      "target": "register()",
+      "source_files": [
+        "README.md",
+        "features/auth/router.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Router-Service-Repository layering pattern",
+      "target": "register()",
+      "source_files": [
+        "README.md",
+        "features/auth/router.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_for",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Router-Service-Repository layering pattern",
+      "target": "AuthService",
+      "source_files": [
+        "README.md",
+        "app/features/auth/service.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "InvalidCredentials",
+      "target": "Typed AppError exception hierarchy",
+      "source_files": [
+        "app/features/auth/exceptions.py",
+        "README.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "implements",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories; peripheral node `InvalidCredentials` unexpectedly reaches hub `Typed AppError exception hierarchy`"
+    },
+    {
+      "source": "UserAlreadyExists",
+      "target": "Typed AppError exception hierarchy",
+      "source_files": [
+        "app/features/auth/exceptions.py",
+        "README.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "implements",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories; peripheral node `UserAlreadyExists` unexpectedly reaches hub `Typed AppError exception hierarchy`"
+    }
+  ],
+  "questions": [
+    {
+      "type": "ambiguous_edge",
+      "question": "What is the exact relationship between `Users Feature Exceptions` and `Users Feature Router`?",
+      "why": "Edge tagged AMBIGUOUS (relation: references) - confidence is low."
+    },
+    {
+      "type": "ambiguous_edge",
+      "question": "What is the exact relationship between `Users Feature Router` and `Users Feature Dependencies`?",
+      "why": "Edge tagged AMBIGUOUS (relation: references) - confidence is low."
+    },
+    {
+      "type": "ambiguous_edge",
+      "question": "What is the exact relationship between `Users Feature Router` and `Users Feature Repository`?",
+      "why": "Edge tagged AMBIGUOUS (relation: references) - confidence is low."
+    },
+    {
+      "type": "ambiguous_edge",
+      "question": "What is the exact relationship between `Media Feature Service` and `Media Feature Repository`?",
+      "why": "Edge tagged AMBIGUOUS (relation: references) - confidence is low."
+    },
+    {
+      "type": "ambiguous_edge",
+      "question": "What is the exact relationship between `Media Feature Service` and `Media Feature Models`?",
+      "why": "Edge tagged AMBIGUOUS (relation: references) - confidence is low."
+    },
+    {
+      "type": "ambiguous_edge",
+      "question": "What is the exact relationship between `Media Feature Service` and `Media Feature Schemas`?",
+      "why": "Edge tagged AMBIGUOUS (relation: references) - confidence is low."
+    },
+    {
+      "type": "ambiguous_edge",
+      "question": "What is the exact relationship between `Media Feature Service` and `Media Feature Exceptions`?",
+      "why": "Edge tagged AMBIGUOUS (relation: references) - confidence is low."
+    }
+  ]
+}

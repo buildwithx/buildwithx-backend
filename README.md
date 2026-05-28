@@ -76,7 +76,7 @@ app/
   email: "...",            // unique
   username: "...",         // unique
   password_hash: "...",
-  display_name, bio, avatar_url,
+  display_name, bio, avatar,
   role: "user" | "author" | "admin",
   created_at, updated_at
 }
@@ -157,6 +157,42 @@ Use **cursor pagination** (`?cursor=<base64(published_at,_id)>&limit=20`), not o
 ### Auth
 JWT access (~15 min) + refresh (~30 day, rotated). Refresh tokens stored hashed in Redis so they can be revoked. Argon2id for password hashing. `Depends(get_current_user)` for protected routes; `require_role("author")` for role gates.
 
+### Recommended Production Enhancements
+
+Add later when scaling:
+
+- OpenTelemetry tracing
+- Prometheus metrics
+- Celery/ARQ workers
+- Meilisearch/OpenSearch
+- Email verification
+- Password reset flow
+- MFA/TOTP support
+- Session/device management
+- OAuth providers (Google/GitHub)
+- API key support
+- Audit logs
+- Distributed tracing
+- Docker Compose local stack
+
+## CI/CD
+
+GitHub Actions (`.github/workflows/ci.yml`) runs on push/PR to `main`:
+
+1. `ruff format --check .` — format validation
+2. `ruff check .` — linting
+3. `mypy app` — type checking
+4. `pytest` — test suite (uses `FakeRepository` fixtures, no Docker required)
+
+## Pre-commit hooks
+
+```
+pre-commit run --all-files  # run manually on all files
+pre-commit install          # install hooks (runs on every commit)
+```
+
+Hooks: `ruff-format` → `ruff --fix` → `mypy app`
+
 ## Cross-cutting concerns
 
 - **Validation** — Pydantic v2 schemas, separate `ArticleCreate` / `ArticleUpdate` / `ArticleRead`.
@@ -165,7 +201,7 @@ JWT access (~15 min) + refresh (~30 day, rotated). Refresh tokens stored hashed 
 - **Background work** — `BackgroundTasks` for cheap stuff (view counts), Celery/ARQ for heavier (search index, email, image processing).
 - **Search** — Mongo text index is fine for v1; graduate to Meilisearch/OpenSearch if needed.
 - **Observability** — structured JSON logs with request ID, Prometheus metrics, OpenTelemetry traces.
-- **Tests** — `pytest-asyncio` + `httpx.AsyncClient` against an ephemeral Mongo (testcontainers); unit-test services with a fake repo.
+- **Tests** — `pytest-asyncio` + `httpx.AsyncClient` with `FakeRepository` fixtures for unit tests (no Docker). Integration tests can use testcontainers for ephemeral Mongo/Redis.
 - **Deploy** — Docker, env via `pydantic-settings`, healthcheck at `/healthz`, readiness probe checks Mongo + Redis.
 
 ## Key tradeoffs

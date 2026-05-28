@@ -1,0 +1,17 @@
+Metadata-Version: 2.4
+Name: buildwithx
+Version: 0.1.0
+Summary: Personal blog platform
+Requires-Python: >=3.14
+Requires-Dist: email-validator>=2.3.0
+Requires-Dist: fastapi[standard]>=0.136.3
+Requires-Dist: gunicorn>=26.0.0
+Requires-Dist: motor>=3.7.1
+Requires-Dist: pwdlib[argon2]>=0.3.0
+Requires-Dist: pydantic>=2.13.4
+Requires-Dist: pydantic-settings>=2.14.1
+Requires-Dist: pyjwt>=2.13.0
+Requires-Dist: pymongo[srv]>=4.17.0
+Requires-Dist: python-multipart>=0.0.29
+Requires-Dist: redis>=7.4.0
+Requires-Dist: uvicorn[standard]>=0.48.0
