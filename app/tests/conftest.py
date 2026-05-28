@@ -19,6 +19,12 @@ class FakeRepository:
                 return user
         return None
 
+    async def get_user_by_username(self, username: str) -> dict | None:
+        for user in self.users:
+            if user["username"] == username:
+                return user
+        return None
+
     async def get_user_by_id(self, user_id: str) -> dict | None:
         for user in self.users:
             if user["_id"] == user_id:
