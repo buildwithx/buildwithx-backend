@@ -66,6 +66,7 @@ app/shared/dependencies.py
 app/shared/object_id.py
 app/shared/pagination.py
 app/shared/rate_limit.py
+app/shared/username_generator.py
 app/tests/conftest.py
 app/tests/test_auth_register.py
 buildwithx.egg-info/PKG-INFO
