@@ -1,0 +1,6433 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "core_infrastructure",
+        "label": "Core Infrastructure Modules",
+        "nodes": [
+          "app_core_config",
+          "app_core_security",
+          "app_core_exceptions",
+          "app_core_logging",
+          "app_core_request_id"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/core/config.py"
+      },
+      {
+        "id": "comments_feature_stubs",
+        "label": "Comments Feature Stub Files",
+        "nodes": [
+          "app_features_comments_service",
+          "app_features_comments_models",
+          "app_features_comments_schemas",
+          "app_features_comments_router",
+          "app_features_comments_repository",
+          "app_features_comments_dependencies",
+          "app_features_comments_exceptions"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/features/comments/service.py"
+      },
+      {
+        "id": "auth_schemas_group",
+        "label": "Auth request/response schemas",
+        "nodes": [
+          "auth_schemas_RegisterRequest",
+          "auth_schemas_LoginRequest",
+          "auth_schemas_RefreshRequest",
+          "auth_schemas_TokenPair",
+          "auth_schemas_UserRead",
+          "auth_schemas_LogoutRequest"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/features/auth/schemas.py"
+      },
+      {
+        "id": "auth_exceptions_group",
+        "label": "Auth domain exceptions",
+        "nodes": [
+          "auth_exceptions_InvalidCredentials",
+          "auth_exceptions_UserAlreadyExists",
+          "auth_exceptions_InvalidToken",
+          "auth_exceptions_ForbiddenError"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/features/auth/exceptions.py"
+      },
+      {
+        "id": "auth_endpoints",
+        "label": "Auth API endpoints",
+        "nodes": [
+          "auth_router_register",
+          "auth_router_login",
+          "auth_router_refresh",
+          "auth_router_me",
+          "auth_router_logout"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/features/auth/router.py"
+      },
+      {
+        "id": "auth_flow",
+        "label": "Complete auth flow (register through logout)",
+        "nodes": [
+          "auth_router_register",
+          "auth_router_login",
+          "auth_router_refresh",
+          "auth_router_me",
+          "auth_router_logout",
+          "auth_service_AuthService",
+          "auth_repository_AuthRepository",
+          "auth_dependencies_get_current_user"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "app/features/auth/router.py"
+      },
+      {
+        "id": "auth_dependency_chain",
+        "label": "Auth dependency injection chain",
+        "nodes": [
+          "auth_dependencies_get_auth_service",
+          "auth_dependencies_get_current_user",
+          "auth_dependencies_require_role"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/features/auth/dependencies.py"
+      },
+      {
+        "id": "architectural_concepts",
+        "label": "Core architectural patterns and rationale",
+        "nodes": [
+          "concept_router_service_repo_layering",
+          "concept_feature_modular_layout",
+          "concept_jwt_refresh_token_revocation",
+          "concept_author_snapshot_denormalization",
+          "concept_cursor_pagination",
+          "concept_apperror_hierarchy",
+          "concept_centralized_indexes"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "README.md"
+      },
+      {
+        "id": "auth_token_lifecycle",
+        "label": "Refresh token lifecycle (store-validate-revoke)",
+        "nodes": [
+          "auth_repository_token_storage",
+          "auth_repository_token_validation",
+          "auth_repository_token_revocation"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "app/features/auth/repository.py"
+      },
+      {
+        "id": "auth_flows",
+        "label": "Authentication flows (register-login-refresh-logout)",
+        "nodes": [
+          "auth_service_register",
+          "auth_service_login",
+          "auth_service_refresh",
+          "auth_service_logout"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.9,
+        "source_file": "app/features/auth/service.py"
+      },
+      {
+        "id": "error_handling_chain",
+        "label": "Error handling registration chain",
+        "nodes": [
+          "exceptions_AppError",
+          "exceptions_app_error_handler",
+          "exceptions_register_exception_handlers",
+          "main_register_exception_handlers"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "app/core/exceptions.py"
+      },
+      {
+        "id": "test_infrastructure",
+        "label": "Test fixture infrastructure",
+        "nodes": [
+          "conftest_FakeRepository",
+          "conftest_api_client"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/tests/conftest.py"
+      },
+      {
+        "id": "database_initialization",
+        "label": "Database initialization and indexing",
+        "nodes": [
+          "mongo_database",
+          "mongo_get_database",
+          "indexes_create_indexes",
+          "main_lifespan"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.9,
+        "source_file": "app/main.py"
+      },
+      {
+        "id": "auth_endpoints",
+        "label": "Auth API endpoints",
+        "nodes": [
+          "auth_router_register",
+          "auth_router_login",
+          "auth_router_refresh",
+          "auth_router_me",
+          "auth_router_logout"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/features/auth/router.py"
+      },
+      {
+        "id": "auth_schemas_group",
+        "label": "Auth request/response schemas",
+        "nodes": [
+          "auth_schemas_RegisterRequest",
+          "auth_schemas_LoginRequest",
+          "auth_schemas_RefreshRequest",
+          "auth_schemas_TokenPair",
+          "auth_schemas_UserRead",
+          "auth_schemas_LogoutRequest"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/features/auth/schemas.py"
+      },
+      {
+        "id": "auth_exceptions_group",
+        "label": "Auth domain exceptions",
+        "nodes": [
+          "auth_exceptions_InvalidCredentials",
+          "auth_exceptions_UserAlreadyExists",
+          "auth_exceptions_InvalidToken",
+          "auth_exceptions_ForbiddenError"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/features/auth/exceptions.py"
+      },
+      {
+        "id": "auth_dependency_chain",
+        "label": "Auth dependency injection chain",
+        "nodes": [
+          "auth_dependencies_get_auth_service",
+          "auth_dependencies_get_current_user",
+          "auth_dependencies_require_role"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/features/auth/dependencies.py"
+      },
+      {
+        "id": "db_connection_providers",
+        "label": "Database connection providers",
+        "nodes": [
+          "db_mongo_get_database",
+          "db_redis_get_redis"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/db/mongo.py"
+      },
+      {
+        "id": "auth_flow",
+        "label": "Complete auth flow (register through logout)",
+        "nodes": [
+          "auth_router_register",
+          "auth_router_login",
+          "auth_router_refresh",
+          "auth_router_me",
+          "auth_router_logout",
+          "auth_service_AuthService",
+          "auth_repository_AuthRepository",
+          "auth_dependencies_get_current_user"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "app/features/auth/router.py"
+      },
+      {
+        "id": "test_infrastructure",
+        "label": "Auth test infrastructure",
+        "nodes": [
+          "tests_conftest",
+          "tests_conftest_FakeRepository",
+          "test_auth_register"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/tests/conftest.py"
+      },
+      {
+        "id": "architectural_concepts",
+        "label": "Core architectural patterns and rationale",
+        "nodes": [
+          "concept_router_service_repo_layering",
+          "concept_feature_modular_layout",
+          "concept_jwt_refresh_token_revocation",
+          "concept_author_snapshot_denormalization",
+          "concept_cursor_pagination",
+          "concept_apperror_hierarchy",
+          "concept_centralized_indexes"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "README.md"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "__init__.py",
+      "source_location": "L1",
+      "id": "init_py",
+      "community": 20,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "main.py",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": "L1",
+      "id": "main_py",
+      "community": 6,
+      "norm_label": "main.py"
+    },
+    {
+      "label": "lifespan()",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": "L14",
+      "id": "app_main_lifespan",
+      "community": 6,
+      "norm_label": "lifespan()"
+    },
+    {
+      "label": "healthcheck()",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": "L26",
+      "id": "app_main_healthcheck",
+      "community": 6,
+      "norm_label": "healthcheck()"
+    },
+    {
+      "label": "logging.py",
+      "file_type": "code",
+      "source_file": "core/logging.py",
+      "source_location": "L1",
+      "id": "core_logging_py",
+      "community": 8,
+      "norm_label": "logging.py"
+    },
+    {
+      "label": "set_request_id()",
+      "file_type": "code",
+      "source_file": "core/logging.py",
+      "source_location": "L88",
+      "id": "core_logging_set_request_id",
+      "community": 8,
+      "norm_label": "set_request_id()"
+    },
+    {
+      "label": "get_request_id()",
+      "file_type": "code",
+      "source_file": "core/logging.py",
+      "source_location": "L92",
+      "id": "core_logging_get_request_id",
+      "community": 8,
+      "norm_label": "get_request_id()"
+    },
+    {
+      "label": "reset_request_id()",
+      "file_type": "code",
+      "source_file": "core/logging.py",
+      "source_location": "L96",
+      "id": "core_logging_reset_request_id",
+      "community": 8,
+      "norm_label": "reset_request_id()"
+    },
+    {
+      "label": "JSONFormatter",
+      "file_type": "code",
+      "source_file": "core/logging.py",
+      "source_location": "L100",
+      "id": "core_logging_jsonformatter",
+      "community": 8,
+      "norm_label": "jsonformatter"
+    },
+    {
+      "label": ".format()",
+      "file_type": "code",
+      "source_file": "core/logging.py",
+      "source_location": "L101",
+      "id": "core_logging_jsonformatter_format",
+      "community": 8,
+      "norm_label": ".format()"
+    },
+    {
+      "label": "setup_logging()",
+      "file_type": "code",
+      "source_file": "core/logging.py",
+      "source_location": "L126",
+      "id": "core_logging_setup_logging",
+      "community": 8,
+      "norm_label": "setup_logging()"
+    },
+    {
+      "label": "configure_logging()",
+      "file_type": "code",
+      "source_file": "core/logging.py",
+      "source_location": "L141",
+      "id": "core_logging_configure_logging",
+      "community": 8,
+      "norm_label": "configure_logging()"
+    },
+    {
+      "label": "get_logger()",
+      "file_type": "code",
+      "source_file": "core/logging.py",
+      "source_location": "L149",
+      "id": "core_logging_get_logger",
+      "community": 8,
+      "norm_label": "get_logger()"
+    },
+    {
+      "label": "Structured JSON logging with per-request context.  `setup_logging` installs a JS",
+      "file_type": "rationale",
+      "source_file": "core/logging.py",
+      "source_location": "L1",
+      "id": "core_logging_rationale_1",
+      "community": 8,
+      "norm_label": "structured json logging with per-request context.  `setup_logging` installs a js"
+    },
+    {
+      "label": "Configure the root logger to emit JSON to stdout. Idempotent.",
+      "file_type": "rationale",
+      "source_file": "core/logging.py",
+      "source_location": "L127",
+      "id": "core_logging_rationale_127",
+      "community": 8,
+      "norm_label": "configure the root logger to emit json to stdout. idempotent."
+    },
+    {
+      "label": "config.py",
+      "file_type": "code",
+      "source_file": "core/config.py",
+      "source_location": "L1",
+      "id": "core_config_py",
+      "community": 13,
+      "norm_label": "config.py"
+    },
+    {
+      "label": "Settings",
+      "file_type": "code",
+      "source_file": "core/config.py",
+      "source_location": "L7",
+      "id": "core_config_settings",
+      "community": 13,
+      "norm_label": "settings"
+    },
+    {
+      "label": "BaseSettings",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "basesettings",
+      "community": 13,
+      "norm_label": "basesettings"
+    },
+    {
+      "label": "get_settings()",
+      "file_type": "code",
+      "source_file": "core/config.py",
+      "source_location": "L30",
+      "id": "core_config_get_settings",
+      "community": 13,
+      "norm_label": "get_settings()"
+    },
+    {
+      "label": "security.py",
+      "file_type": "code",
+      "source_file": "core/security.py",
+      "source_location": "L1",
+      "id": "core_security_py",
+      "community": 2,
+      "norm_label": "security.py"
+    },
+    {
+      "label": "TokenType",
+      "file_type": "code",
+      "source_file": "core/security.py",
+      "source_location": "L15",
+      "id": "core_security_tokentype",
+      "community": 2,
+      "norm_label": "tokentype"
+    },
+    {
+      "label": "hash_password()",
+      "file_type": "code",
+      "source_file": "core/security.py",
+      "source_location": "L20",
+      "id": "core_security_hash_password",
+      "community": 2,
+      "norm_label": "hash_password()"
+    },
+    {
+      "label": "verify_password()",
+      "file_type": "code",
+      "source_file": "core/security.py",
+      "source_location": "L24",
+      "id": "core_security_verify_password",
+      "community": 2,
+      "norm_label": "verify_password()"
+    },
+    {
+      "label": "create_token()",
+      "file_type": "code",
+      "source_file": "core/security.py",
+      "source_location": "L28",
+      "id": "core_security_create_token",
+      "community": 2,
+      "norm_label": "create_token()"
+    },
+    {
+      "label": "create_access_token()",
+      "file_type": "code",
+      "source_file": "core/security.py",
+      "source_location": "L50",
+      "id": "core_security_create_access_token",
+      "community": 2,
+      "norm_label": "create_access_token()"
+    },
+    {
+      "label": "create_refresh_token()",
+      "file_type": "code",
+      "source_file": "core/security.py",
+      "source_location": "L60",
+      "id": "core_security_create_refresh_token",
+      "community": 2,
+      "norm_label": "create_refresh_token()"
+    },
+    {
+      "label": "decode_token()",
+      "file_type": "code",
+      "source_file": "core/security.py",
+      "source_location": "L70",
+      "id": "core_security_decode_token",
+      "community": 2,
+      "norm_label": "decode_token()"
+    },
+    {
+      "label": "hash_token()",
+      "file_type": "code",
+      "source_file": "core/security.py",
+      "source_location": "L78",
+      "id": "core_security_hash_token",
+      "community": 9,
+      "norm_label": "hash_token()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "core/__init__.py",
+      "source_location": "L1",
+      "id": "core_init_py",
+      "community": 21,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "request_id.py",
+      "file_type": "code",
+      "source_file": "core/request_id.py",
+      "source_location": "L1",
+      "id": "core_request_id_py",
+      "community": 0,
+      "norm_label": "request_id.py"
+    },
+    {
+      "label": "RequestIDMiddleware",
+      "file_type": "code",
+      "source_file": "core/request_id.py",
+      "source_location": "L6",
+      "id": "core_request_id_requestidmiddleware",
+      "community": 0,
+      "norm_label": "requestidmiddleware"
+    },
+    {
+      "label": "BaseHTTPMiddleware",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "basehttpmiddleware",
+      "community": 0,
+      "norm_label": "basehttpmiddleware"
+    },
+    {
+      "label": ".dispatch()",
+      "file_type": "code",
+      "source_file": "core/request_id.py",
+      "source_location": "L7",
+      "id": "core_request_id_requestidmiddleware_dispatch",
+      "community": 0,
+      "norm_label": ".dispatch()"
+    },
+    {
+      "label": "exceptions.py",
+      "file_type": "code",
+      "source_file": "core/exceptions.py",
+      "source_location": "L1",
+      "id": "core_exceptions_py",
+      "community": 5,
+      "norm_label": "exceptions.py"
+    },
+    {
+      "label": "AppError",
+      "file_type": "code",
+      "source_file": "core/exceptions.py",
+      "source_location": "L7",
+      "id": "core_exceptions_apperror",
+      "community": 5,
+      "norm_label": "apperror"
+    },
+    {
+      "label": "Exception",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "exception",
+      "community": 5,
+      "norm_label": "exception"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "core/exceptions.py",
+      "source_location": "L8",
+      "id": "core_exceptions_apperror_init",
+      "community": 5,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "app_error_handler()",
+      "file_type": "code",
+      "source_file": "core/exceptions.py",
+      "source_location": "L22",
+      "id": "core_exceptions_app_error_handler",
+      "community": 5,
+      "norm_label": "app_error_handler()"
+    },
+    {
+      "label": "register_exception_handlers()",
+      "file_type": "code",
+      "source_file": "core/exceptions.py",
+      "source_location": "L46",
+      "id": "core_exceptions_register_exception_handlers",
+      "community": 5,
+      "norm_label": "register_exception_handlers()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "features/__init__.py",
+      "source_location": "L1",
+      "id": "features_init_py",
+      "community": 22,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "service.py",
+      "file_type": "code",
+      "source_file": "features/comments/service.py",
+      "source_location": "L1",
+      "id": "features_comments_service_py",
+      "community": 23,
+      "norm_label": "service.py"
+    },
+    {
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "features/comments/models.py",
+      "source_location": "L1",
+      "id": "features_comments_models_py",
+      "community": 24,
+      "norm_label": "models.py"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "features/comments/__init__.py",
+      "source_location": "L1",
+      "id": "features_comments_init_py",
+      "community": 25,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "schemas.py",
+      "file_type": "code",
+      "source_file": "features/comments/schemas.py",
+      "source_location": "L1",
+      "id": "features_comments_schemas_py",
+      "community": 26,
+      "norm_label": "schemas.py"
+    },
+    {
+      "label": "exceptions.py",
+      "file_type": "code",
+      "source_file": "features/comments/exceptions.py",
+      "source_location": "L1",
+      "id": "features_comments_exceptions_py",
+      "community": 27,
+      "norm_label": "exceptions.py"
+    },
+    {
+      "label": "router.py",
+      "file_type": "code",
+      "source_file": "features/comments/router.py",
+      "source_location": "L1",
+      "id": "features_comments_router_py",
+      "community": 28,
+      "norm_label": "router.py"
+    },
+    {
+      "label": "repository.py",
+      "file_type": "code",
+      "source_file": "features/comments/repository.py",
+      "source_location": "L1",
+      "id": "features_comments_repository_py",
+      "community": 29,
+      "norm_label": "repository.py"
+    },
+    {
+      "label": "dependencies.py",
+      "file_type": "code",
+      "source_file": "features/comments/dependencies.py",
+      "source_location": "L1",
+      "id": "features_comments_dependencies_py",
+      "community": 30,
+      "norm_label": "dependencies.py"
+    },
+    {
+      "label": "service.py",
+      "file_type": "code",
+      "source_file": "features/auth/service.py",
+      "source_location": "L1",
+      "id": "features_auth_service_py",
+      "community": 6,
+      "norm_label": "service.py"
+    },
+    {
+      "label": "AuthService",
+      "file_type": "code",
+      "source_file": "features/auth/service.py",
+      "source_location": "L31",
+      "id": "auth_service_authservice",
+      "community": 2,
+      "norm_label": "authservice"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "features/auth/service.py",
+      "source_location": "L32",
+      "id": "auth_service_authservice_init",
+      "community": 2,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "._generate_unique_username()",
+      "file_type": "code",
+      "source_file": "features/auth/service.py",
+      "source_location": "L35",
+      "id": "auth_service_authservice_generate_unique_username",
+      "community": 2,
+      "norm_label": "._generate_unique_username()"
+    },
+    {
+      "label": ".register()",
+      "file_type": "code",
+      "source_file": "features/auth/service.py",
+      "source_location": "L47",
+      "id": "auth_service_authservice_register",
+      "community": 2,
+      "norm_label": ".register()"
+    },
+    {
+      "label": ".login()",
+      "file_type": "code",
+      "source_file": "features/auth/service.py",
+      "source_location": "L77",
+      "id": "auth_service_authservice_login",
+      "community": 2,
+      "norm_label": ".login()"
+    },
+    {
+      "label": ".refresh()",
+      "file_type": "code",
+      "source_file": "features/auth/service.py",
+      "source_location": "L103",
+      "id": "auth_service_authservice_refresh",
+      "community": 2,
+      "norm_label": ".refresh()"
+    },
+    {
+      "label": ".logout()",
+      "file_type": "code",
+      "source_file": "features/auth/service.py",
+      "source_location": "L142",
+      "id": "auth_service_authservice_logout",
+      "community": 2,
+      "norm_label": ".logout()"
+    },
+    {
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "features/auth/models.py",
+      "source_location": "L1",
+      "id": "features_auth_models_py",
+      "community": 0,
+      "norm_label": "models.py"
+    },
+    {
+      "label": "UserDocument",
+      "file_type": "code",
+      "source_file": "features/auth/models.py",
+      "source_location": "L8",
+      "id": "auth_models_userdocument",
+      "community": 0,
+      "norm_label": "userdocument"
+    },
+    {
+      "label": "BaseModel",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "basemodel",
+      "community": 0,
+      "norm_label": "basemodel"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "features/auth/__init__.py",
+      "source_location": "L1",
+      "id": "features_auth_init_py",
+      "community": 31,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "schemas.py",
+      "file_type": "code",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L1",
+      "id": "features_auth_schemas_py",
+      "community": 0,
+      "norm_label": "schemas.py"
+    },
+    {
+      "label": "RegisterRequest",
+      "file_type": "code",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L8",
+      "id": "auth_schemas_registerrequest",
+      "community": 0,
+      "norm_label": "registerrequest"
+    },
+    {
+      "label": "LoginRequest",
+      "file_type": "code",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L13",
+      "id": "auth_schemas_loginrequest",
+      "community": 0,
+      "norm_label": "loginrequest"
+    },
+    {
+      "label": "RefreshRequest",
+      "file_type": "code",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L18",
+      "id": "auth_schemas_refreshrequest",
+      "community": 0,
+      "norm_label": "refreshrequest"
+    },
+    {
+      "label": "TokenPair",
+      "file_type": "code",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L22",
+      "id": "auth_schemas_tokenpair",
+      "community": 0,
+      "norm_label": "tokenpair"
+    },
+    {
+      "label": "UserRead",
+      "file_type": "code",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L28",
+      "id": "auth_schemas_userread",
+      "community": 0,
+      "norm_label": "userread"
+    },
+    {
+      "label": "LogoutRequest",
+      "file_type": "code",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L41",
+      "id": "auth_schemas_logoutrequest",
+      "community": 0,
+      "norm_label": "logoutrequest"
+    },
+    {
+      "label": "exceptions.py",
+      "file_type": "code",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L1",
+      "id": "features_auth_exceptions_py",
+      "community": 5,
+      "norm_label": "exceptions.py"
+    },
+    {
+      "label": "InvalidCredentials",
+      "file_type": "code",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L10",
+      "id": "auth_exceptions_invalidcredentials",
+      "community": 5,
+      "norm_label": "invalidcredentials"
+    },
+    {
+      "label": "AppError",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "apperror",
+      "community": 5,
+      "norm_label": "apperror"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L11",
+      "id": "auth_exceptions_invalidcredentials_init",
+      "community": 5,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "UserAlreadyExists",
+      "file_type": "code",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L19",
+      "id": "auth_exceptions_useralreadyexists",
+      "community": 5,
+      "norm_label": "useralreadyexists"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L20",
+      "id": "auth_exceptions_useralreadyexists_init",
+      "community": 5,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "InvalidToken",
+      "file_type": "code",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L28",
+      "id": "auth_exceptions_invalidtoken",
+      "community": 5,
+      "norm_label": "invalidtoken"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L29",
+      "id": "auth_exceptions_invalidtoken_init",
+      "community": 5,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "ForbiddenError",
+      "file_type": "code",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L37",
+      "id": "auth_exceptions_forbiddenerror",
+      "community": 5,
+      "norm_label": "forbiddenerror"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L38",
+      "id": "auth_exceptions_forbiddenerror_init",
+      "community": 5,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "router.py",
+      "file_type": "code",
+      "source_file": "features/auth/router.py",
+      "source_location": "L1",
+      "id": "features_auth_router_py",
+      "community": 1,
+      "norm_label": "router.py"
+    },
+    {
+      "label": "register()",
+      "file_type": "code",
+      "source_file": "features/auth/router.py",
+      "source_location": "L25",
+      "id": "auth_router_register",
+      "community": 1,
+      "norm_label": "register()"
+    },
+    {
+      "label": "login()",
+      "file_type": "code",
+      "source_file": "features/auth/router.py",
+      "source_location": "L36",
+      "id": "auth_router_login",
+      "community": 1,
+      "norm_label": "login()"
+    },
+    {
+      "label": "refresh()",
+      "file_type": "code",
+      "source_file": "features/auth/router.py",
+      "source_location": "L47",
+      "id": "auth_router_refresh",
+      "community": 1,
+      "norm_label": "refresh()"
+    },
+    {
+      "label": "me()",
+      "file_type": "code",
+      "source_file": "features/auth/router.py",
+      "source_location": "L58",
+      "id": "auth_router_me",
+      "community": 6,
+      "norm_label": "me()"
+    },
+    {
+      "label": "logout()",
+      "file_type": "code",
+      "source_file": "features/auth/router.py",
+      "source_location": "L65",
+      "id": "auth_router_logout",
+      "community": 1,
+      "norm_label": "logout()"
+    },
+    {
+      "label": "repository.py",
+      "file_type": "code",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L1",
+      "id": "features_auth_repository_py",
+      "community": 6,
+      "norm_label": "repository.py"
+    },
+    {
+      "label": "AuthRepository",
+      "file_type": "code",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L12",
+      "id": "auth_repository_authrepository",
+      "community": 9,
+      "norm_label": "authrepository"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L13",
+      "id": "auth_repository_authrepository_init",
+      "community": 9,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".get_user_by_email()",
+      "file_type": "code",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L26",
+      "id": "auth_repository_authrepository_get_user_by_email",
+      "community": 9,
+      "norm_label": ".get_user_by_email()"
+    },
+    {
+      "label": ".get_user_by_username()",
+      "file_type": "code",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L33",
+      "id": "auth_repository_authrepository_get_user_by_username",
+      "community": 9,
+      "norm_label": ".get_user_by_username()"
+    },
+    {
+      "label": ".get_user_by_id()",
+      "file_type": "code",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L40",
+      "id": "auth_repository_authrepository_get_user_by_id",
+      "community": 9,
+      "norm_label": ".get_user_by_id()"
+    },
+    {
+      "label": ".create_user()",
+      "file_type": "code",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L47",
+      "id": "auth_repository_authrepository_create_user",
+      "community": 9,
+      "norm_label": ".create_user()"
+    },
+    {
+      "label": ".store_refresh_token()",
+      "file_type": "code",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L70",
+      "id": "auth_repository_authrepository_store_refresh_token",
+      "community": 9,
+      "norm_label": ".store_refresh_token()"
+    },
+    {
+      "label": ".validate_refresh_token()",
+      "file_type": "code",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L85",
+      "id": "auth_repository_authrepository_validate_refresh_token",
+      "community": 9,
+      "norm_label": ".validate_refresh_token()"
+    },
+    {
+      "label": ".revoke_refresh_token()",
+      "file_type": "code",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L95",
+      "id": "auth_repository_authrepository_revoke_refresh_token",
+      "community": 9,
+      "norm_label": ".revoke_refresh_token()"
+    },
+    {
+      "label": "dependencies.py",
+      "file_type": "code",
+      "source_file": "features/auth/dependencies.py",
+      "source_location": "L1",
+      "id": "features_auth_dependencies_py",
+      "community": 4,
+      "norm_label": "dependencies.py"
+    },
+    {
+      "label": "get_auth_service()",
+      "file_type": "code",
+      "source_file": "features/auth/dependencies.py",
+      "source_location": "L17",
+      "id": "auth_dependencies_get_auth_service",
+      "community": 1,
+      "norm_label": "get_auth_service()"
+    },
+    {
+      "label": "get_current_user()",
+      "file_type": "code",
+      "source_file": "features/auth/dependencies.py",
+      "source_location": "L26",
+      "id": "auth_dependencies_get_current_user",
+      "community": 4,
+      "norm_label": "get_current_user()"
+    },
+    {
+      "label": "require_role()",
+      "file_type": "code",
+      "source_file": "features/auth/dependencies.py",
+      "source_location": "L61",
+      "id": "auth_dependencies_require_role",
+      "community": 4,
+      "norm_label": "require_role()"
+    },
+    {
+      "label": "service.py",
+      "file_type": "code",
+      "source_file": "features/articles/service.py",
+      "source_location": "L1",
+      "id": "features_articles_service_py",
+      "community": 32,
+      "norm_label": "service.py"
+    },
+    {
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "features/articles/models.py",
+      "source_location": "L1",
+      "id": "features_articles_models_py",
+      "community": 33,
+      "norm_label": "models.py"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "features/articles/__init__.py",
+      "source_location": "L1",
+      "id": "features_articles_init_py",
+      "community": 34,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "schemas.py",
+      "file_type": "code",
+      "source_file": "features/articles/schemas.py",
+      "source_location": "L1",
+      "id": "features_articles_schemas_py",
+      "community": 35,
+      "norm_label": "schemas.py"
+    },
+    {
+      "label": "exceptions.py",
+      "file_type": "code",
+      "source_file": "features/articles/exceptions.py",
+      "source_location": "L1",
+      "id": "features_articles_exceptions_py",
+      "community": 36,
+      "norm_label": "exceptions.py"
+    },
+    {
+      "label": "router.py",
+      "file_type": "code",
+      "source_file": "features/articles/router.py",
+      "source_location": "L1",
+      "id": "features_articles_router_py",
+      "community": 37,
+      "norm_label": "router.py"
+    },
+    {
+      "label": "repository.py",
+      "file_type": "code",
+      "source_file": "features/articles/repository.py",
+      "source_location": "L1",
+      "id": "features_articles_repository_py",
+      "community": 38,
+      "norm_label": "repository.py"
+    },
+    {
+      "label": "dependencies.py",
+      "file_type": "code",
+      "source_file": "features/articles/dependencies.py",
+      "source_location": "L1",
+      "id": "features_articles_dependencies_py",
+      "community": 39,
+      "norm_label": "dependencies.py"
+    },
+    {
+      "label": "service.py",
+      "file_type": "code",
+      "source_file": "features/tags/service.py",
+      "source_location": "L1",
+      "id": "features_tags_service_py",
+      "community": 40,
+      "norm_label": "service.py"
+    },
+    {
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "features/tags/models.py",
+      "source_location": "L1",
+      "id": "features_tags_models_py",
+      "community": 41,
+      "norm_label": "models.py"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "features/tags/__init__.py",
+      "source_location": "L1",
+      "id": "features_tags_init_py",
+      "community": 42,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "schemas.py",
+      "file_type": "code",
+      "source_file": "features/tags/schemas.py",
+      "source_location": "L1",
+      "id": "features_tags_schemas_py",
+      "community": 43,
+      "norm_label": "schemas.py"
+    },
+    {
+      "label": "exceptions.py",
+      "file_type": "code",
+      "source_file": "features/tags/exceptions.py",
+      "source_location": "L1",
+      "id": "features_tags_exceptions_py",
+      "community": 44,
+      "norm_label": "exceptions.py"
+    },
+    {
+      "label": "router.py",
+      "file_type": "code",
+      "source_file": "features/tags/router.py",
+      "source_location": "L1",
+      "id": "features_tags_router_py",
+      "community": 45,
+      "norm_label": "router.py"
+    },
+    {
+      "label": "repository.py",
+      "file_type": "code",
+      "source_file": "features/tags/repository.py",
+      "source_location": "L1",
+      "id": "features_tags_repository_py",
+      "community": 46,
+      "norm_label": "repository.py"
+    },
+    {
+      "label": "dependencies.py",
+      "file_type": "code",
+      "source_file": "features/tags/dependencies.py",
+      "source_location": "L1",
+      "id": "features_tags_dependencies_py",
+      "community": 47,
+      "norm_label": "dependencies.py"
+    },
+    {
+      "label": "service.py",
+      "file_type": "code",
+      "source_file": "features/users/service.py",
+      "source_location": "L1",
+      "id": "features_users_service_py",
+      "community": 48,
+      "norm_label": "service.py"
+    },
+    {
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "features/users/models.py",
+      "source_location": "L1",
+      "id": "features_users_models_py",
+      "community": 49,
+      "norm_label": "models.py"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "features/users/__init__.py",
+      "source_location": "L1",
+      "id": "features_users_init_py",
+      "community": 50,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "schemas.py",
+      "file_type": "code",
+      "source_file": "features/users/schemas.py",
+      "source_location": "L1",
+      "id": "features_users_schemas_py",
+      "community": 51,
+      "norm_label": "schemas.py"
+    },
+    {
+      "label": "exceptions.py",
+      "file_type": "code",
+      "source_file": "features/users/exceptions.py",
+      "source_location": "L1",
+      "id": "features_users_exceptions_py",
+      "community": 52,
+      "norm_label": "exceptions.py"
+    },
+    {
+      "label": "router.py",
+      "file_type": "code",
+      "source_file": "features/users/router.py",
+      "source_location": "L1",
+      "id": "features_users_router_py",
+      "community": 53,
+      "norm_label": "router.py"
+    },
+    {
+      "label": "repository.py",
+      "file_type": "code",
+      "source_file": "features/users/repository.py",
+      "source_location": "L1",
+      "id": "features_users_repository_py",
+      "community": 54,
+      "norm_label": "repository.py"
+    },
+    {
+      "label": "dependencies.py",
+      "file_type": "code",
+      "source_file": "features/users/dependencies.py",
+      "source_location": "L1",
+      "id": "features_users_dependencies_py",
+      "community": 55,
+      "norm_label": "dependencies.py"
+    },
+    {
+      "label": "service.py",
+      "file_type": "code",
+      "source_file": "features/media/service.py",
+      "source_location": "L1",
+      "id": "features_media_service_py",
+      "community": 56,
+      "norm_label": "service.py"
+    },
+    {
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "features/media/models.py",
+      "source_location": "L1",
+      "id": "features_media_models_py",
+      "community": 57,
+      "norm_label": "models.py"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "features/media/__init__.py",
+      "source_location": "L1",
+      "id": "features_media_init_py",
+      "community": 58,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "schemas.py",
+      "file_type": "code",
+      "source_file": "features/media/schemas.py",
+      "source_location": "L1",
+      "id": "features_media_schemas_py",
+      "community": 59,
+      "norm_label": "schemas.py"
+    },
+    {
+      "label": "exceptions.py",
+      "file_type": "code",
+      "source_file": "features/media/exceptions.py",
+      "source_location": "L1",
+      "id": "features_media_exceptions_py",
+      "community": 60,
+      "norm_label": "exceptions.py"
+    },
+    {
+      "label": "router.py",
+      "file_type": "code",
+      "source_file": "features/media/router.py",
+      "source_location": "L1",
+      "id": "features_media_router_py",
+      "community": 61,
+      "norm_label": "router.py"
+    },
+    {
+      "label": "repository.py",
+      "file_type": "code",
+      "source_file": "features/media/repository.py",
+      "source_location": "L1",
+      "id": "features_media_repository_py",
+      "community": 62,
+      "norm_label": "repository.py"
+    },
+    {
+      "label": "dependencies.py",
+      "file_type": "code",
+      "source_file": "features/media/dependencies.py",
+      "source_location": "L1",
+      "id": "features_media_dependencies_py",
+      "community": 63,
+      "norm_label": "dependencies.py"
+    },
+    {
+      "label": "test_auth_register.py",
+      "file_type": "code",
+      "source_file": "tests/test_auth_register.py",
+      "source_location": "L1",
+      "id": "tests_test_auth_register_py",
+      "community": 0,
+      "norm_label": "test_auth_register.py"
+    },
+    {
+      "label": "test_register_success()",
+      "file_type": "code",
+      "source_file": "tests/test_auth_register.py",
+      "source_location": "L8",
+      "id": "tests_test_auth_register_test_register_success",
+      "community": 0,
+      "norm_label": "test_register_success()"
+    },
+    {
+      "label": "test_register_duplicate_email()",
+      "file_type": "code",
+      "source_file": "tests/test_auth_register.py",
+      "source_location": "L28",
+      "id": "tests_test_auth_register_test_register_duplicate_email",
+      "community": 0,
+      "norm_label": "test_register_duplicate_email()"
+    },
+    {
+      "label": "test_register_invalid_email()",
+      "file_type": "code",
+      "source_file": "tests/test_auth_register.py",
+      "source_location": "L48",
+      "id": "tests_test_auth_register_test_register_invalid_email",
+      "community": 0,
+      "norm_label": "test_register_invalid_email()"
+    },
+    {
+      "label": "test_register_short_password()",
+      "file_type": "code",
+      "source_file": "tests/test_auth_register.py",
+      "source_location": "L61",
+      "id": "tests_test_auth_register_test_register_short_password",
+      "community": 0,
+      "norm_label": "test_register_short_password()"
+    },
+    {
+      "label": "conftest.py",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L1",
+      "id": "tests_conftest_py",
+      "community": 7,
+      "norm_label": "conftest.py"
+    },
+    {
+      "label": "FakeRepository",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L11",
+      "id": "tests_conftest_fakerepository",
+      "community": 7,
+      "norm_label": "fakerepository"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L12",
+      "id": "tests_conftest_fakerepository_init",
+      "community": 7,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".get_user_by_email()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L16",
+      "id": "tests_conftest_fakerepository_get_user_by_email",
+      "community": 7,
+      "norm_label": ".get_user_by_email()"
+    },
+    {
+      "label": ".get_user_by_username()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L22",
+      "id": "tests_conftest_fakerepository_get_user_by_username",
+      "community": 7,
+      "norm_label": ".get_user_by_username()"
+    },
+    {
+      "label": ".get_user_by_id()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L28",
+      "id": "tests_conftest_fakerepository_get_user_by_id",
+      "community": 7,
+      "norm_label": ".get_user_by_id()"
+    },
+    {
+      "label": ".create_user()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L34",
+      "id": "tests_conftest_fakerepository_create_user",
+      "community": 7,
+      "norm_label": ".create_user()"
+    },
+    {
+      "label": ".store_refresh_token()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L48",
+      "id": "tests_conftest_fakerepository_store_refresh_token",
+      "community": 7,
+      "norm_label": ".store_refresh_token()"
+    },
+    {
+      "label": ".validate_refresh_token()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L57",
+      "id": "tests_conftest_fakerepository_validate_refresh_token",
+      "community": 7,
+      "norm_label": ".validate_refresh_token()"
+    },
+    {
+      "label": ".revoke_refresh_token()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L60",
+      "id": "tests_conftest_fakerepository_revoke_refresh_token",
+      "community": 7,
+      "norm_label": ".revoke_refresh_token()"
+    },
+    {
+      "label": "fake_repository()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L65",
+      "id": "tests_conftest_fake_repository",
+      "community": 7,
+      "norm_label": "fake_repository()"
+    },
+    {
+      "label": "auth_service()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L70",
+      "id": "tests_conftest_auth_service",
+      "community": 7,
+      "norm_label": "auth_service()"
+    },
+    {
+      "label": "api_client()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L75",
+      "id": "tests_conftest_api_client",
+      "community": 7,
+      "norm_label": "api_client()"
+    },
+    {
+      "label": "username_generator.py",
+      "file_type": "code",
+      "source_file": "shared/username_generator.py",
+      "source_location": "L1",
+      "id": "shared_username_generator_py",
+      "community": 2,
+      "norm_label": "username_generator.py"
+    },
+    {
+      "label": "UsernameGenerator",
+      "file_type": "code",
+      "source_file": "shared/username_generator.py",
+      "source_location": "L5",
+      "id": "shared_username_generator_usernamegenerator",
+      "community": 2,
+      "norm_label": "usernamegenerator"
+    },
+    {
+      "label": "generate()",
+      "file_type": "code",
+      "source_file": "shared/username_generator.py",
+      "source_location": "L9",
+      "id": "shared_username_generator_generate",
+      "community": 2,
+      "norm_label": "generate()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "shared/__init__.py",
+      "source_location": "L1",
+      "id": "shared_init_py",
+      "community": 64,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "rate_limit.py",
+      "file_type": "code",
+      "source_file": "shared/rate_limit.py",
+      "source_location": "L1",
+      "id": "shared_rate_limit_py",
+      "community": 16,
+      "norm_label": "rate_limit.py"
+    },
+    {
+      "label": "RateLimiter",
+      "file_type": "code",
+      "source_file": "shared/rate_limit.py",
+      "source_location": "L4",
+      "id": "shared_rate_limit_ratelimiter",
+      "community": 16,
+      "norm_label": "ratelimiter"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "shared/rate_limit.py",
+      "source_location": "L5",
+      "id": "shared_rate_limit_ratelimiter_init",
+      "community": 16,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".is_allowed()",
+      "file_type": "code",
+      "source_file": "shared/rate_limit.py",
+      "source_location": "L11",
+      "id": "shared_rate_limit_ratelimiter_is_allowed",
+      "community": 16,
+      "norm_label": ".is_allowed()"
+    },
+    {
+      "label": "pagination.py",
+      "file_type": "code",
+      "source_file": "shared/pagination.py",
+      "source_location": "L1",
+      "id": "shared_pagination_py",
+      "community": 65,
+      "norm_label": "pagination.py"
+    },
+    {
+      "label": "dependencies.py",
+      "file_type": "code",
+      "source_file": "shared/dependencies.py",
+      "source_location": "L1",
+      "id": "shared_dependencies_py",
+      "community": 66,
+      "norm_label": "dependencies.py"
+    },
+    {
+      "label": "object_id.py",
+      "file_type": "code",
+      "source_file": "shared/object_id.py",
+      "source_location": "L1",
+      "id": "shared_object_id_py",
+      "community": 0,
+      "norm_label": "object_id.py"
+    },
+    {
+      "label": "PyObjectId",
+      "file_type": "code",
+      "source_file": "shared/object_id.py",
+      "source_location": "L8",
+      "id": "shared_object_id_pyobjectid",
+      "community": 0,
+      "norm_label": "pyobjectid"
+    },
+    {
+      "label": "str",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "str",
+      "community": 0,
+      "norm_label": "str"
+    },
+    {
+      "label": "__get_pydantic_core_schema__()",
+      "file_type": "code",
+      "source_file": "shared/object_id.py",
+      "source_location": "L10",
+      "id": "shared_object_id_get_pydantic_core_schema",
+      "community": 0,
+      "norm_label": "__get_pydantic_core_schema__()"
+    },
+    {
+      "label": "__get_pydantic_json_schema__()",
+      "file_type": "code",
+      "source_file": "shared/object_id.py",
+      "source_location": "L21",
+      "id": "shared_object_id_get_pydantic_json_schema",
+      "community": 0,
+      "norm_label": "__get_pydantic_json_schema__()"
+    },
+    {
+      "label": "validate()",
+      "file_type": "code",
+      "source_file": "shared/object_id.py",
+      "source_location": "L29",
+      "id": "shared_object_id_validate",
+      "community": 0,
+      "norm_label": "validate()"
+    },
+    {
+      "label": "mongo.py",
+      "file_type": "code",
+      "source_file": "db/mongo.py",
+      "source_location": "L1",
+      "id": "db_mongo_py",
+      "community": 6,
+      "norm_label": "mongo.py"
+    },
+    {
+      "label": "get_database()",
+      "file_type": "code",
+      "source_file": "db/mongo.py",
+      "source_location": "L15",
+      "id": "db_mongo_get_database",
+      "community": 6,
+      "norm_label": "get_database()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "db/__init__.py",
+      "source_location": "L1",
+      "id": "db_init_py",
+      "community": 67,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "indexes.py",
+      "file_type": "code",
+      "source_file": "db/indexes.py",
+      "source_location": "L1",
+      "id": "db_indexes_py",
+      "community": 6,
+      "norm_label": "indexes.py"
+    },
+    {
+      "label": "create_indexes()",
+      "file_type": "code",
+      "source_file": "db/indexes.py",
+      "source_location": "L5",
+      "id": "db_indexes_create_indexes",
+      "community": 6,
+      "norm_label": "create_indexes()"
+    },
+    {
+      "label": "redis.py",
+      "file_type": "code",
+      "source_file": "db/redis.py",
+      "source_location": "L1",
+      "id": "db_redis_py",
+      "community": 1,
+      "norm_label": "redis.py"
+    },
+    {
+      "label": "get_redis()",
+      "file_type": "code",
+      "source_file": "db/redis.py",
+      "source_location": "L15",
+      "id": "db_redis_get_redis",
+      "community": 1,
+      "norm_label": "get_redis()"
+    },
+    {
+      "label": "Structured JSON Logging Module",
+      "file_type": "code",
+      "source_file": "app/core/logging.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_core_logging",
+      "community": 12,
+      "norm_label": "structured json logging module"
+    },
+    {
+      "label": "JSON Log Formatter",
+      "file_type": "code",
+      "source_file": "app/core/logging.py",
+      "source_location": "100",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_core_logging_json_formatter",
+      "community": 12,
+      "norm_label": "json log formatter"
+    },
+    {
+      "label": "Request ID Context Variable",
+      "file_type": "code",
+      "source_file": "app/core/logging.py",
+      "source_location": "55",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_core_logging_request_id_var",
+      "community": 12,
+      "norm_label": "request id context variable"
+    },
+    {
+      "label": "Application Settings Configuration",
+      "file_type": "code",
+      "source_file": "app/core/config.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_core_config",
+      "community": 6,
+      "norm_label": "application settings configuration"
+    },
+    {
+      "label": "Security Utilities (JWT & Password Hashing)",
+      "file_type": "code",
+      "source_file": "app/core/security.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_core_security",
+      "community": 6,
+      "norm_label": "security utilities (jwt & password hashing)"
+    },
+    {
+      "label": "Request ID Middleware",
+      "file_type": "code",
+      "source_file": "app/core/request_id.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_core_request_id",
+      "community": 12,
+      "norm_label": "request id middleware"
+    },
+    {
+      "label": "Comments Service (stub)",
+      "file_type": "code",
+      "source_file": "app/features/comments/service.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_features_comments_service",
+      "community": 68,
+      "norm_label": "comments service (stub)"
+    },
+    {
+      "label": "Comments Data Models (stub)",
+      "file_type": "code",
+      "source_file": "app/features/comments/models.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_features_comments_models",
+      "community": 69,
+      "norm_label": "comments data models (stub)"
+    },
+    {
+      "label": "Comments API Schemas (stub)",
+      "file_type": "code",
+      "source_file": "app/features/comments/schemas.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_features_comments_schemas",
+      "community": 70,
+      "norm_label": "comments api schemas (stub)"
+    },
+    {
+      "label": "Comments Exceptions (stub)",
+      "file_type": "code",
+      "source_file": "app/features/comments/exceptions.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_features_comments_exceptions",
+      "community": 71,
+      "norm_label": "comments exceptions (stub)"
+    },
+    {
+      "label": "Comments API Router (stub)",
+      "file_type": "code",
+      "source_file": "app/features/comments/router.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_features_comments_router",
+      "community": 72,
+      "norm_label": "comments api router (stub)"
+    },
+    {
+      "label": "Comments Data Repository (stub)",
+      "file_type": "code",
+      "source_file": "app/features/comments/repository.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_features_comments_repository",
+      "community": 73,
+      "norm_label": "comments data repository (stub)"
+    },
+    {
+      "label": "Comments Dependencies (stub)",
+      "file_type": "code",
+      "source_file": "app/features/comments/dependencies.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_features_comments_dependencies",
+      "community": 74,
+      "norm_label": "comments dependencies (stub)"
+    },
+    {
+      "label": "UserDocument",
+      "file_type": "code",
+      "source_file": "app/features/auth/models.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_models_UserDocument",
+      "community": 6,
+      "norm_label": "userdocument"
+    },
+    {
+      "label": "RegisterRequest",
+      "file_type": "code",
+      "source_file": "app/features/auth/schemas.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_schemas_RegisterRequest",
+      "community": 1,
+      "norm_label": "registerrequest"
+    },
+    {
+      "label": "LoginRequest",
+      "file_type": "code",
+      "source_file": "app/features/auth/schemas.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_schemas_LoginRequest",
+      "community": 1,
+      "norm_label": "loginrequest"
+    },
+    {
+      "label": "RefreshRequest",
+      "file_type": "code",
+      "source_file": "app/features/auth/schemas.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_schemas_RefreshRequest",
+      "community": 1,
+      "norm_label": "refreshrequest"
+    },
+    {
+      "label": "TokenPair",
+      "file_type": "code",
+      "source_file": "app/features/auth/schemas.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_schemas_TokenPair",
+      "community": 1,
+      "norm_label": "tokenpair"
+    },
+    {
+      "label": "UserRead",
+      "file_type": "code",
+      "source_file": "app/features/auth/schemas.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_schemas_UserRead",
+      "community": 6,
+      "norm_label": "userread"
+    },
+    {
+      "label": "LogoutRequest",
+      "file_type": "code",
+      "source_file": "app/features/auth/schemas.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_schemas_LogoutRequest",
+      "community": 1,
+      "norm_label": "logoutrequest"
+    },
+    {
+      "label": "InvalidCredentials",
+      "file_type": "code",
+      "source_file": "app/features/auth/exceptions.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_exceptions_InvalidCredentials",
+      "community": 4,
+      "norm_label": "invalidcredentials"
+    },
+    {
+      "label": "UserAlreadyExists",
+      "file_type": "code",
+      "source_file": "app/features/auth/exceptions.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_exceptions_UserAlreadyExists",
+      "community": 4,
+      "norm_label": "useralreadyexists"
+    },
+    {
+      "label": "InvalidToken",
+      "file_type": "code",
+      "source_file": "app/features/auth/exceptions.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_exceptions_InvalidToken",
+      "community": 4,
+      "norm_label": "invalidtoken"
+    },
+    {
+      "label": "ForbiddenError",
+      "file_type": "code",
+      "source_file": "app/features/auth/exceptions.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_exceptions_ForbiddenError",
+      "community": 4,
+      "norm_label": "forbiddenerror"
+    },
+    {
+      "label": "Articles Service",
+      "file_type": "code",
+      "source_file": "app/features/articles/service.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_service",
+      "community": 3,
+      "norm_label": "articles service"
+    },
+    {
+      "label": "Articles Models",
+      "file_type": "code",
+      "source_file": "app/features/articles/models.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_models",
+      "community": 3,
+      "norm_label": "articles models"
+    },
+    {
+      "label": "Articles Init",
+      "file_type": "code",
+      "source_file": "app/features/articles/__init__.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles___init___",
+      "community": 75,
+      "norm_label": "articles init"
+    },
+    {
+      "label": "Articles Schemas",
+      "file_type": "code",
+      "source_file": "app/features/articles/schemas.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_schemas",
+      "community": 3,
+      "norm_label": "articles schemas"
+    },
+    {
+      "label": "Articles Router",
+      "file_type": "code",
+      "source_file": "app/features/articles/router.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_router",
+      "community": 3,
+      "norm_label": "articles router"
+    },
+    {
+      "label": "Articles Repository",
+      "file_type": "code",
+      "source_file": "app/features/articles/repository.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_repository",
+      "community": 3,
+      "norm_label": "articles repository"
+    },
+    {
+      "label": "Articles Dependencies",
+      "file_type": "code",
+      "source_file": "app/features/articles/dependencies.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_dependencies",
+      "community": 3,
+      "norm_label": "articles dependencies"
+    },
+    {
+      "label": "Tags Service",
+      "file_type": "code",
+      "source_file": "app/features/tags/service.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tags_service",
+      "community": 3,
+      "norm_label": "tags service"
+    },
+    {
+      "label": "Tags Models",
+      "file_type": "code",
+      "source_file": "app/features/tags/models.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tags_models",
+      "community": 3,
+      "norm_label": "tags models"
+    },
+    {
+      "label": "Tags Init",
+      "file_type": "code",
+      "source_file": "app/features/tags/__init__.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tags___init___",
+      "community": 76,
+      "norm_label": "tags init"
+    },
+    {
+      "label": "Tags Schemas",
+      "file_type": "code",
+      "source_file": "app/features/tags/schemas.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tags_schemas",
+      "community": 3,
+      "norm_label": "tags schemas"
+    },
+    {
+      "label": "Tags Exceptions",
+      "file_type": "code",
+      "source_file": "app/features/tags/exceptions.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tags_exceptions",
+      "community": 3,
+      "norm_label": "tags exceptions"
+    },
+    {
+      "label": "Tags Router",
+      "file_type": "code",
+      "source_file": "app/features/tags/router.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tags_router",
+      "community": 3,
+      "norm_label": "tags router"
+    },
+    {
+      "label": "Tags Repository",
+      "file_type": "code",
+      "source_file": "app/features/tags/repository.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tags_repository",
+      "community": 3,
+      "norm_label": "tags repository"
+    },
+    {
+      "label": "Tags Dependencies",
+      "file_type": "code",
+      "source_file": "app/features/tags/dependencies.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tags_dependencies",
+      "community": 3,
+      "norm_label": "tags dependencies"
+    },
+    {
+      "label": "Users Service",
+      "file_type": "code",
+      "source_file": "app/features/users/service.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "users_service",
+      "community": 3,
+      "norm_label": "users service"
+    },
+    {
+      "label": "Users Models",
+      "file_type": "code",
+      "source_file": "app/features/users/models.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "users_models",
+      "community": 3,
+      "norm_label": "users models"
+    },
+    {
+      "label": "Users Init",
+      "file_type": "code",
+      "source_file": "app/features/users/__init__.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "users___init___",
+      "community": 77,
+      "norm_label": "users init"
+    },
+    {
+      "label": "Users Schemas",
+      "file_type": "code",
+      "source_file": "app/features/users/schemas.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "users_schemas",
+      "community": 3,
+      "norm_label": "users schemas"
+    },
+    {
+      "label": "Users Feature Exceptions",
+      "file_type": "code",
+      "source_file": "app/features/users/exceptions.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "users_exceptions",
+      "community": 17,
+      "norm_label": "users feature exceptions"
+    },
+    {
+      "label": "Users Feature Router",
+      "file_type": "code",
+      "source_file": "app/features/users/router.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "users_router",
+      "community": 17,
+      "norm_label": "users feature router"
+    },
+    {
+      "label": "Users Feature Repository",
+      "file_type": "code",
+      "source_file": "app/features/users/repository.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "users_repository",
+      "community": 17,
+      "norm_label": "users feature repository"
+    },
+    {
+      "label": "Users Feature Dependencies",
+      "file_type": "code",
+      "source_file": "app/features/users/dependencies.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "users_dependencies",
+      "community": 17,
+      "norm_label": "users feature dependencies"
+    },
+    {
+      "label": "Media Feature Service",
+      "file_type": "code",
+      "source_file": "app/features/media/service.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "media_service",
+      "community": 10,
+      "norm_label": "media feature service"
+    },
+    {
+      "label": "Media Feature Models",
+      "file_type": "code",
+      "source_file": "app/features/media/models.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "media_models",
+      "community": 10,
+      "norm_label": "media feature models"
+    },
+    {
+      "label": "Media Feature Init",
+      "file_type": "code",
+      "source_file": "app/features/media/__init__.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "media_init",
+      "community": 78,
+      "norm_label": "media feature init"
+    },
+    {
+      "label": "Media Feature Schemas",
+      "file_type": "code",
+      "source_file": "app/features/media/schemas.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "media_schemas",
+      "community": 10,
+      "norm_label": "media feature schemas"
+    },
+    {
+      "label": "Media Feature Exceptions",
+      "file_type": "code",
+      "source_file": "app/features/media/exceptions.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "media_exceptions",
+      "community": 10,
+      "norm_label": "media feature exceptions"
+    },
+    {
+      "label": "Media Feature Router",
+      "file_type": "code",
+      "source_file": "app/features/media/router.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "media_router",
+      "community": 10,
+      "norm_label": "media feature router"
+    },
+    {
+      "label": "Media Feature Repository",
+      "file_type": "code",
+      "source_file": "app/features/media/repository.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "media_repository",
+      "community": 10,
+      "norm_label": "media feature repository"
+    },
+    {
+      "label": "Media Feature Dependencies",
+      "file_type": "code",
+      "source_file": "app/features/media/dependencies.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "media_dependencies",
+      "community": 10,
+      "norm_label": "media feature dependencies"
+    },
+    {
+      "label": "Auth register tests",
+      "file_type": "code",
+      "source_file": "app/tests/test_auth_register.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "test_auth_register",
+      "community": 1,
+      "norm_label": "auth register tests"
+    },
+    {
+      "label": "Shared Module Init",
+      "file_type": "code",
+      "source_file": "app/shared/__init__.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "shared_init",
+      "community": 79,
+      "norm_label": "shared module init"
+    },
+    {
+      "label": "RateLimiter",
+      "file_type": "code",
+      "source_file": "app/shared/rate_limit.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "shared_rate_limit_RateLimiter",
+      "community": 1,
+      "norm_label": "ratelimiter"
+    },
+    {
+      "label": "Shared Pagination (Cursor Codec)",
+      "file_type": "code",
+      "source_file": "app/shared/pagination.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "shared_pagination",
+      "community": 19,
+      "norm_label": "shared pagination (cursor codec)"
+    },
+    {
+      "label": "Shared Dependencies (get_db, pagination params)",
+      "file_type": "code",
+      "source_file": "app/shared/dependencies.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "shared_dependencies",
+      "community": 19,
+      "norm_label": "shared dependencies (get_db, pagination params)"
+    },
+    {
+      "label": "DB Module Init",
+      "file_type": "code",
+      "source_file": "app/db/__init__.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "db_init",
+      "community": 80,
+      "norm_label": "db module init"
+    },
+    {
+      "label": "Backend Architecture README",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme",
+      "community": 4,
+      "norm_label": "backend architecture readme"
+    },
+    {
+      "label": "Router-Service-Repository layering pattern",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_router_service_repo_layering",
+      "community": 1,
+      "norm_label": "router-service-repository layering pattern"
+    },
+    {
+      "label": "Feature-based modular architecture",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_feature_modular_layout",
+      "community": 4,
+      "norm_label": "feature-based modular architecture"
+    },
+    {
+      "label": "JWT access + hashed refresh token revocation",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_jwt_refresh_token_revocation",
+      "community": 4,
+      "norm_label": "jwt access + hashed refresh token revocation"
+    },
+    {
+      "label": "Author snapshot denormalization in articles",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_author_snapshot_denormalization",
+      "community": 4,
+      "norm_label": "author snapshot denormalization in articles"
+    },
+    {
+      "label": "Cursor-based pagination for MongoDB",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_cursor_pagination",
+      "community": 4,
+      "norm_label": "cursor-based pagination for mongodb"
+    },
+    {
+      "label": "Typed AppError exception hierarchy",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_apperror_hierarchy",
+      "community": 4,
+      "norm_label": "typed apperror exception hierarchy"
+    },
+    {
+      "label": "Centralized MongoDB index definitions",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_centralized_indexes",
+      "community": 4,
+      "norm_label": "centralized mongodb index definitions"
+    },
+    {
+      "label": "CLAUDE.md project guidance",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_md",
+      "community": 4,
+      "norm_label": "claude.md project guidance"
+    },
+    {
+      "label": "Application lifespan manager",
+      "file_type": "code",
+      "source_file": "app/main.py",
+      "source_location": 13,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "main_lifespan",
+      "community": 15,
+      "norm_label": "application lifespan manager"
+    },
+    {
+      "label": "Register exception handlers call",
+      "file_type": "code",
+      "source_file": "app/main.py",
+      "source_location": 22,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "main_register_exception_handlers",
+      "community": 14,
+      "norm_label": "register exception handlers call"
+    },
+    {
+      "label": "Include auth router",
+      "file_type": "code",
+      "source_file": "app/main.py",
+      "source_location": 30,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "main_include_auth_router",
+      "community": 81,
+      "norm_label": "include auth router"
+    },
+    {
+      "label": "AppError base exception class",
+      "file_type": "code",
+      "source_file": "app/core/exceptions.py",
+      "source_location": 7,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "exceptions_AppError",
+      "community": 14,
+      "norm_label": "apperror base exception class"
+    },
+    {
+      "label": "AppError exception handler",
+      "file_type": "code",
+      "source_file": "app/core/exceptions.py",
+      "source_location": 22,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "exceptions_app_error_handler",
+      "community": 14,
+      "norm_label": "apperror exception handler"
+    },
+    {
+      "label": "Register exception handlers function",
+      "file_type": "code",
+      "source_file": "app/core/exceptions.py",
+      "source_location": 46,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "exceptions_register_exception_handlers",
+      "community": 14,
+      "norm_label": "register exception handlers function"
+    },
+    {
+      "label": "AuthService business logic class",
+      "file_type": "code",
+      "source_file": "app/features/auth/service.py",
+      "source_location": 31,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_service_AuthService",
+      "community": 1,
+      "norm_label": "authservice business logic class"
+    },
+    {
+      "label": "User registration flow",
+      "file_type": "code",
+      "source_file": "app/features/auth/service.py",
+      "source_location": 47,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_service_register",
+      "community": 18,
+      "norm_label": "user registration flow"
+    },
+    {
+      "label": "User login flow",
+      "file_type": "code",
+      "source_file": "app/features/auth/service.py",
+      "source_location": 77,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_service_login",
+      "community": 82,
+      "norm_label": "user login flow"
+    },
+    {
+      "label": "Token refresh flow",
+      "file_type": "code",
+      "source_file": "app/features/auth/service.py",
+      "source_location": 103,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_service_refresh",
+      "community": 11,
+      "norm_label": "token refresh flow"
+    },
+    {
+      "label": "Token logout flow",
+      "file_type": "code",
+      "source_file": "app/features/auth/service.py",
+      "source_location": 142,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_service_logout",
+      "community": 11,
+      "norm_label": "token logout flow"
+    },
+    {
+      "label": "Generate unique username",
+      "file_type": "code",
+      "source_file": "app/features/auth/service.py",
+      "source_location": 35,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_service_generate_username",
+      "community": 18,
+      "norm_label": "generate unique username"
+    },
+    {
+      "label": "AuthRepository data access class",
+      "file_type": "code",
+      "source_file": "app/features/auth/repository.py",
+      "source_location": 12,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_repository_AuthRepository",
+      "community": 1,
+      "norm_label": "authrepository data access class"
+    },
+    {
+      "label": "Refresh token Redis storage pattern",
+      "file_type": "code",
+      "source_file": "app/features/auth/repository.py",
+      "source_location": 70,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_repository_token_storage",
+      "community": 11,
+      "norm_label": "refresh token redis storage pattern"
+    },
+    {
+      "label": "Refresh token Redis validation pattern",
+      "file_type": "code",
+      "source_file": "app/features/auth/repository.py",
+      "source_location": 85,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_repository_token_validation",
+      "community": 11,
+      "norm_label": "refresh token redis validation pattern"
+    },
+    {
+      "label": "Refresh token Redis revocation pattern",
+      "file_type": "code",
+      "source_file": "app/features/auth/repository.py",
+      "source_location": 95,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_repository_token_revocation",
+      "community": 11,
+      "norm_label": "refresh token redis revocation pattern"
+    },
+    {
+      "label": "Random username generator utility",
+      "file_type": "code",
+      "source_file": "app/shared/username_generator.py",
+      "source_location": 5,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "username_generator_UsernameGenerator",
+      "community": 18,
+      "norm_label": "random username generator utility"
+    },
+    {
+      "label": "Pydantic ObjectId validator",
+      "file_type": "code",
+      "source_file": "app/shared/object_id.py",
+      "source_location": 8,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "object_id_PyObjectId",
+      "community": 83,
+      "norm_label": "pydantic objectid validator"
+    },
+    {
+      "label": "MongoDB database connection singleton",
+      "file_type": "code",
+      "source_file": "app/db/mongo.py",
+      "source_location": 12,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "mongo_database",
+      "community": 15,
+      "norm_label": "mongodb database connection singleton"
+    },
+    {
+      "label": "Database async iterator dependency",
+      "file_type": "code",
+      "source_file": "app/db/mongo.py",
+      "source_location": 15,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "mongo_get_database",
+      "community": 15,
+      "norm_label": "database async iterator dependency"
+    },
+    {
+      "label": "Database index creation function",
+      "file_type": "code",
+      "source_file": "app/db/indexes.py",
+      "source_location": 5,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "indexes_create_indexes",
+      "community": 15,
+      "norm_label": "database index creation function"
+    },
+    {
+      "label": "FakeRepository test double",
+      "file_type": "code",
+      "source_file": "app/tests/conftest.py",
+      "source_location": 11,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "conftest_FakeRepository",
+      "community": 1,
+      "norm_label": "fakerepository test double"
+    },
+    {
+      "label": "API client test fixture with dependency override",
+      "file_type": "code",
+      "source_file": "app/tests/conftest.py",
+      "source_location": 74,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "conftest_api_client",
+      "community": 1,
+      "norm_label": "api client test fixture with dependency override"
+    },
+    {
+      "label": "Articles Exceptions",
+      "file_type": "code",
+      "source_file": "app/features/articles/Exception.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_Exception",
+      "community": 4,
+      "norm_label": "articles exceptions"
+    },
+    {
+      "label": "Test configuration and fixtures",
+      "file_type": "code",
+      "source_file": "app/tests/conftest.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tests_conftest",
+      "community": 1,
+      "norm_label": "test configuration and fixtures"
+    },
+    {
+      "label": "FakeRepository",
+      "file_type": "code",
+      "source_file": "app/tests/conftest.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tests_conftest_FakeRepository",
+      "community": 1,
+      "norm_label": "fakerepository"
+    },
+    {
+      "label": "PyObjectId",
+      "file_type": "code",
+      "source_file": "app/shared/object_id.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "shared_object_id_PyObjectId",
+      "community": 6,
+      "norm_label": "pyobjectid"
+    }
+  ],
+  "links": [
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "main.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "main_py",
+      "target": "app_core_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "main_py",
+      "target": "app_main_lifespan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "main_py",
+      "target": "app_main_healthcheck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "main.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "app_main_lifespan",
+      "target": "db_indexes_create_indexes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/logging.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "core_logging_py",
+      "target": "core_logging_set_request_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/logging.py",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "core_logging_py",
+      "target": "core_logging_get_request_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/logging.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "core_logging_py",
+      "target": "core_logging_reset_request_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/logging.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "core_logging_py",
+      "target": "core_logging_jsonformatter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/logging.py",
+      "source_location": "L126",
+      "weight": 1.0,
+      "source": "core_logging_py",
+      "target": "core_logging_setup_logging",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/logging.py",
+      "source_location": "L141",
+      "weight": 1.0,
+      "source": "core_logging_py",
+      "target": "core_logging_configure_logging",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/logging.py",
+      "source_location": "L149",
+      "weight": 1.0,
+      "source": "core_logging_py",
+      "target": "core_logging_get_logger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "core/logging.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "core_logging_rationale_1",
+      "target": "core_logging_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "core/logging.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "core_logging_jsonformatter",
+      "target": "core_logging_jsonformatter_format",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "core/logging.py",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "core_logging_setup_logging",
+      "target": "core_logging_jsonformatter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "core/logging.py",
+      "source_location": "L127",
+      "weight": 1.0,
+      "source": "core_logging_rationale_127",
+      "target": "core_logging_setup_logging",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/config.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "core_config_py",
+      "target": "core_config_settings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/config.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "core_config_py",
+      "target": "core_config_get_settings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "core/config.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "core_config_settings",
+      "target": "basesettings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "core/config.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "core_config_get_settings",
+      "target": "core_config_settings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "core/security.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "core_security_py",
+      "target": "app_core_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/security.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "core_security_py",
+      "target": "core_security_tokentype",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/security.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "core_security_py",
+      "target": "core_security_hash_password",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/security.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "core_security_py",
+      "target": "core_security_verify_password",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/security.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "core_security_py",
+      "target": "core_security_create_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/security.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "core_security_py",
+      "target": "core_security_create_access_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/security.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "core_security_py",
+      "target": "core_security_create_refresh_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/security.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "core_security_py",
+      "target": "core_security_decode_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/security.py",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "core_security_py",
+      "target": "core_security_hash_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "auth_service_authservice",
+      "target": "core_security_tokentype",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "auth_service_authservice_register",
+      "target": "core_security_hash_password"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "auth_service_authservice_login",
+      "target": "core_security_verify_password"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "core/security.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "core_security_create_access_token",
+      "target": "core_security_create_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "core/security.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "core_security_create_refresh_token",
+      "target": "core_security_create_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "auth_service_authservice_register",
+      "target": "core_security_create_access_token"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "source": "auth_service_authservice_login",
+      "target": "core_security_create_access_token"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L128",
+      "weight": 1.0,
+      "source": "auth_service_authservice_refresh",
+      "target": "core_security_create_access_token"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "auth_service_authservice_register",
+      "target": "core_security_create_refresh_token"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "auth_service_authservice_login",
+      "target": "core_security_create_refresh_token"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L129",
+      "weight": 1.0,
+      "source": "auth_service_authservice_refresh",
+      "target": "core_security_create_refresh_token"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "auth_service_authservice_refresh",
+      "target": "core_security_decode_token"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/dependencies.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "auth_dependencies_get_current_user",
+      "target": "core_security_decode_token"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/repository.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "auth_repository_authrepository_store_refresh_token",
+      "target": "core_security_hash_token"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/repository.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "auth_repository_authrepository_validate_refresh_token",
+      "target": "core_security_hash_token"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/repository.py",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "auth_repository_authrepository_revoke_refresh_token",
+      "target": "core_security_hash_token"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/request_id.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "core_request_id_py",
+      "target": "core_request_id_requestidmiddleware",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "core/request_id.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "core_request_id_requestidmiddleware",
+      "target": "basehttpmiddleware",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "core/request_id.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "core_request_id_requestidmiddleware",
+      "target": "core_request_id_requestidmiddleware_dispatch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "core/request_id.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "core_request_id_requestidmiddleware_dispatch",
+      "target": "str"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/exceptions.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "core_exceptions_py",
+      "target": "core_exceptions_apperror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/exceptions.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "core_exceptions_py",
+      "target": "core_exceptions_app_error_handler",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/exceptions.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "core_exceptions_py",
+      "target": "core_exceptions_register_exception_handlers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "core/exceptions.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "core_exceptions_apperror",
+      "target": "exception",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "core/exceptions.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "core_exceptions_apperror",
+      "target": "core_exceptions_apperror_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L7",
+      "weight": 0.8,
+      "source": "auth_exceptions_invalidcredentials",
+      "target": "core_exceptions_apperror",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L7",
+      "weight": 0.8,
+      "source": "auth_exceptions_useralreadyexists",
+      "target": "core_exceptions_apperror",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L7",
+      "weight": 0.8,
+      "source": "auth_exceptions_invalidtoken",
+      "target": "core_exceptions_apperror",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L7",
+      "weight": 0.8,
+      "source": "auth_exceptions_forbiddenerror",
+      "target": "core_exceptions_apperror",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "features_auth_service_py",
+      "target": "app_core_security",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "features_auth_service_py",
+      "target": "app_core_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "features_auth_service_py",
+      "target": "auth_service_authservice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "auth_service_authservice",
+      "target": "auth_service_authservice_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "auth_service_authservice",
+      "target": "auth_service_authservice_generate_unique_username",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "auth_service_authservice",
+      "target": "auth_service_authservice_register",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "auth_service_authservice",
+      "target": "auth_service_authservice_login",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "auth_service_authservice",
+      "target": "auth_service_authservice_refresh",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L142",
+      "weight": 1.0,
+      "source": "auth_service_authservice",
+      "target": "auth_service_authservice_logout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "source": "auth_service_authservice",
+      "target": "shared_username_generator_usernamegenerator",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L18",
+      "weight": 0.8,
+      "source": "auth_service_authservice",
+      "target": "auth_models_userdocument",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L19",
+      "weight": 0.8,
+      "source": "auth_service_authservice",
+      "target": "auth_repository_authrepository",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L20",
+      "weight": 0.8,
+      "source": "auth_service_authservice",
+      "target": "auth_schemas_loginrequest",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L20",
+      "weight": 0.8,
+      "source": "auth_service_authservice",
+      "target": "auth_schemas_registerrequest",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L20",
+      "weight": 0.8,
+      "source": "auth_service_authservice",
+      "target": "auth_schemas_tokenpair",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L7",
+      "weight": 0.8,
+      "source": "tests_conftest_fakerepository",
+      "target": "auth_service_authservice",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/dependencies.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "auth_dependencies_get_auth_service",
+      "target": "auth_service_authservice"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/conftest.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "tests_conftest_auth_service",
+      "target": "auth_service_authservice"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/service.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "auth_service_authservice_register",
+      "target": "auth_service_authservice_generate_unique_username",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "auth_service_authservice_register",
+      "target": "auth_exceptions_useralreadyexists"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "auth_service_authservice_register",
+      "target": "auth_models_userdocument"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "auth_service_authservice_register",
+      "target": "auth_schemas_tokenpair"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "auth_service_authservice_login",
+      "target": "auth_exceptions_invalidcredentials"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "auth_service_authservice_login",
+      "target": "auth_schemas_tokenpair"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "auth_service_authservice_refresh",
+      "target": "auth_exceptions_invalidtoken"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/service.py",
+      "source_location": "L137",
+      "weight": 1.0,
+      "source": "auth_service_authservice_refresh",
+      "target": "auth_schemas_tokenpair"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/models.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "features_auth_models_py",
+      "target": "auth_models_userdocument",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/models.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "auth_models_userdocument",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/models.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "auth_models_userdocument",
+      "target": "shared_object_id_pyobjectid",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L7",
+      "weight": 0.8,
+      "source": "auth_repository_authrepository",
+      "target": "auth_models_userdocument",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "auth_schemas_registerrequest",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "auth_schemas_loginrequest",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "auth_schemas_refreshrequest",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "auth_schemas_tokenpair",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "auth_schemas_userread",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "auth_schemas_logoutrequest",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "features_auth_schemas_py",
+      "target": "auth_schemas_registerrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "features_auth_schemas_py",
+      "target": "auth_schemas_loginrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "features_auth_schemas_py",
+      "target": "auth_schemas_refreshrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "features_auth_schemas_py",
+      "target": "auth_schemas_tokenpair",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "features_auth_schemas_py",
+      "target": "auth_schemas_userread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "features_auth_schemas_py",
+      "target": "auth_schemas_logoutrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "auth_schemas_registerrequest",
+      "target": "shared_object_id_pyobjectid",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_auth_register.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "tests_test_auth_register_test_register_success",
+      "target": "auth_schemas_registerrequest"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_auth_register.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "tests_test_auth_register_test_register_duplicate_email",
+      "target": "auth_schemas_registerrequest"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "auth_schemas_loginrequest",
+      "target": "shared_object_id_pyobjectid",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "auth_schemas_refreshrequest",
+      "target": "shared_object_id_pyobjectid",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "auth_schemas_tokenpair",
+      "target": "shared_object_id_pyobjectid",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "auth_schemas_userread",
+      "target": "shared_object_id_pyobjectid",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "features/auth/schemas.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "auth_schemas_logoutrequest",
+      "target": "shared_object_id_pyobjectid",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "features_auth_exceptions_py",
+      "target": "auth_exceptions_invalidcredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "features_auth_exceptions_py",
+      "target": "auth_exceptions_useralreadyexists",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "features_auth_exceptions_py",
+      "target": "auth_exceptions_invalidtoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "features_auth_exceptions_py",
+      "target": "auth_exceptions_forbiddenerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "auth_exceptions_invalidcredentials",
+      "target": "apperror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "auth_exceptions_invalidcredentials",
+      "target": "auth_exceptions_invalidcredentials_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "auth_exceptions_useralreadyexists",
+      "target": "apperror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "auth_exceptions_invalidtoken",
+      "target": "apperror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "auth_exceptions_forbiddenerror",
+      "target": "apperror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "auth_exceptions_invalidcredentials_init",
+      "target": "auth_exceptions_forbiddenerror_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "auth_exceptions_useralreadyexists",
+      "target": "auth_exceptions_useralreadyexists_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "auth_exceptions_useralreadyexists_init",
+      "target": "auth_exceptions_forbiddenerror_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "auth_exceptions_invalidtoken",
+      "target": "auth_exceptions_invalidtoken_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/dependencies.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "auth_dependencies_get_current_user",
+      "target": "auth_exceptions_invalidtoken"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "auth_exceptions_invalidtoken_init",
+      "target": "auth_exceptions_forbiddenerror_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/exceptions.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "auth_exceptions_forbiddenerror",
+      "target": "auth_exceptions_forbiddenerror_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/router.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "features_auth_router_py",
+      "target": "auth_router_register",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/router.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "features_auth_router_py",
+      "target": "auth_router_login",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/router.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "features_auth_router_py",
+      "target": "auth_router_refresh",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/router.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "features_auth_router_py",
+      "target": "auth_router_me",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/router.py",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "features_auth_router_py",
+      "target": "auth_router_logout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_register",
+      "target": "auth_service_AuthService"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_register",
+      "target": "auth_schemas_RegisterRequest"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_register",
+      "target": "auth_schemas_TokenPair"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_register",
+      "target": "test_auth_register"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "concept_feature_modular_layout",
+      "target": "auth_router_register"
+    },
+    {
+      "relation": "conceptually_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "concept_router_service_repo_layering",
+      "target": "auth_router_register"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_login",
+      "target": "auth_service_AuthService"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_login",
+      "target": "auth_schemas_LoginRequest"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_login",
+      "target": "auth_schemas_TokenPair"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/shared/rate_limit.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "shared_rate_limit_RateLimiter",
+      "target": "auth_router_login"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_refresh",
+      "target": "auth_service_AuthService"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_refresh",
+      "target": "auth_schemas_RefreshRequest"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_refresh",
+      "target": "auth_schemas_TokenPair"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_me",
+      "target": "auth_dependencies_get_current_user"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_me",
+      "target": "auth_schemas_UserRead"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_logout",
+      "target": "auth_service_AuthService"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_router_logout",
+      "target": "auth_schemas_LogoutRequest"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "features_auth_repository_py",
+      "target": "app_core_security",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "features_auth_repository_py",
+      "target": "auth_repository_authrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "auth_repository_authrepository",
+      "target": "auth_repository_authrepository_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "auth_repository_authrepository",
+      "target": "auth_repository_authrepository_get_user_by_email",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "auth_repository_authrepository",
+      "target": "auth_repository_authrepository_get_user_by_username",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "auth_repository_authrepository",
+      "target": "auth_repository_authrepository_get_user_by_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "auth_repository_authrepository",
+      "target": "auth_repository_authrepository_create_user",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "auth_repository_authrepository",
+      "target": "auth_repository_authrepository_store_refresh_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "auth_repository_authrepository",
+      "target": "auth_repository_authrepository_validate_refresh_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/repository.py",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "auth_repository_authrepository",
+      "target": "auth_repository_authrepository_revoke_refresh_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/dependencies.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "auth_dependencies_get_auth_service",
+      "target": "auth_repository_authrepository"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "features/auth/dependencies.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "auth_dependencies_get_current_user",
+      "target": "auth_repository_authrepository"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/dependencies.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "features_auth_dependencies_py",
+      "target": "app_core_security",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/dependencies.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "features_auth_dependencies_py",
+      "target": "auth_dependencies_get_auth_service",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/dependencies.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "features_auth_dependencies_py",
+      "target": "auth_dependencies_get_current_user",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/auth/dependencies.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "features_auth_dependencies_py",
+      "target": "auth_dependencies_require_role",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/dependencies.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_dependencies_get_auth_service",
+      "target": "auth_repository_AuthRepository"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/dependencies.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_dependencies_get_auth_service",
+      "target": "auth_service_AuthService"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/dependencies.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_dependencies_get_auth_service",
+      "target": "db_mongo_get_database"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/dependencies.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_dependencies_get_auth_service",
+      "target": "db_redis_get_redis"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/tests/conftest.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "tests_conftest",
+      "target": "auth_dependencies_get_auth_service"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/dependencies.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_dependencies_get_current_user",
+      "target": "auth_repository_AuthRepository"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/dependencies.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_dependencies_require_role",
+      "target": "auth_dependencies_get_current_user"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/dependencies.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_dependencies_get_current_user",
+      "target": "auth_exceptions_InvalidToken"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/dependencies.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_dependencies_get_current_user",
+      "target": "db_mongo_get_database"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/dependencies.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_dependencies_get_current_user",
+      "target": "db_redis_get_redis"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/features/auth/dependencies.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_dependencies_get_current_user",
+      "target": "concept_jwt_refresh_token_revocation"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/dependencies.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_dependencies_require_role",
+      "target": "auth_exceptions_ForbiddenError"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_auth_register.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "tests_test_auth_register_py",
+      "target": "tests_test_auth_register_test_register_success",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_auth_register.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "tests_test_auth_register_py",
+      "target": "tests_test_auth_register_test_register_duplicate_email",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_auth_register.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "tests_test_auth_register_py",
+      "target": "tests_test_auth_register_test_register_invalid_email",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_auth_register.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "tests_test_auth_register_py",
+      "target": "tests_test_auth_register_test_register_short_password",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "tests_conftest_py",
+      "target": "tests_conftest_fakerepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "tests_conftest_py",
+      "target": "tests_conftest_fake_repository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "tests_conftest_py",
+      "target": "tests_conftest_auth_service",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "tests_conftest_py",
+      "target": "tests_conftest_api_client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "tests_conftest_fakerepository",
+      "target": "tests_conftest_fakerepository_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "tests_conftest_fakerepository",
+      "target": "tests_conftest_fakerepository_get_user_by_email",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "tests_conftest_fakerepository",
+      "target": "tests_conftest_fakerepository_get_user_by_username",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "tests_conftest_fakerepository",
+      "target": "tests_conftest_fakerepository_get_user_by_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "tests_conftest_fakerepository",
+      "target": "tests_conftest_fakerepository_create_user",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "tests_conftest_fakerepository",
+      "target": "tests_conftest_fakerepository_store_refresh_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "tests_conftest_fakerepository",
+      "target": "tests_conftest_fakerepository_validate_refresh_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "tests_conftest_fakerepository",
+      "target": "tests_conftest_fakerepository_revoke_refresh_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "tests_conftest_fake_repository",
+      "target": "tests_conftest_fakerepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/username_generator.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "shared_username_generator_py",
+      "target": "shared_username_generator_usernamegenerator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/username_generator.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "shared_username_generator_py",
+      "target": "shared_username_generator_generate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/rate_limit.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "shared_rate_limit_py",
+      "target": "shared_rate_limit_ratelimiter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/rate_limit.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "shared_rate_limit_ratelimiter",
+      "target": "shared_rate_limit_ratelimiter_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/rate_limit.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "shared_rate_limit_ratelimiter",
+      "target": "shared_rate_limit_ratelimiter_is_allowed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/object_id.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "shared_object_id_py",
+      "target": "shared_object_id_pyobjectid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/object_id.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "shared_object_id_py",
+      "target": "shared_object_id_get_pydantic_core_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/object_id.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "shared_object_id_py",
+      "target": "shared_object_id_get_pydantic_json_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/object_id.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "shared_object_id_py",
+      "target": "shared_object_id_validate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/object_id.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "shared_object_id_pyobjectid",
+      "target": "str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shared/object_id.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "shared_object_id_validate",
+      "target": "str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "db/mongo.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "db_mongo_py",
+      "target": "app_core_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "db/mongo.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "db_mongo_py",
+      "target": "db_mongo_get_database",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/db/mongo.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "db_mongo_get_database",
+      "target": "db_indexes_create_indexes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "db/indexes.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "db_indexes_py",
+      "target": "db_indexes_create_indexes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/db/indexes.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "db_indexes_create_indexes",
+      "target": "auth_models_UserDocument"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/db/indexes.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "db_indexes_create_indexes",
+      "target": "concept_centralized_indexes"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "db/redis.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "db_redis_py",
+      "target": "app_core_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "db/redis.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "db_redis_py",
+      "target": "db_redis_get_redis",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/shared/rate_limit.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "shared_rate_limit_RateLimiter",
+      "target": "db_redis_get_redis"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/core/logging.py",
+      "source_location": "132",
+      "weight": 1.0,
+      "source": "app_core_logging",
+      "target": "app_core_logging_json_formatter"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/core/logging.py",
+      "source_location": "55",
+      "weight": 1.0,
+      "source": "app_core_logging",
+      "target": "app_core_logging_request_id_var"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/core/logging.py",
+      "source_location": "27",
+      "weight": 1.0,
+      "source": "app_core_logging",
+      "target": "app_core_request_id"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/core/logging.py",
+      "source_location": "110",
+      "weight": 1.0,
+      "source": "app_core_logging_json_formatter",
+      "target": "app_core_logging_request_id_var"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/core/request_id.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "app_core_request_id",
+      "target": "app_core_logging_request_id_var"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/core/security.py",
+      "source_location": "45",
+      "weight": 1.0,
+      "source": "app_core_security",
+      "target": "app_core_config"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/models.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_models_UserDocument",
+      "target": "shared_object_id_PyObjectId"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/repository.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_repository_AuthRepository",
+      "target": "auth_models_UserDocument"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/tests/test_auth_register.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "test_auth_register",
+      "target": "auth_schemas_RegisterRequest"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/schemas.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_schemas_UserRead",
+      "target": "shared_object_id_PyObjectId"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/features/auth/exceptions.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_exceptions_InvalidCredentials",
+      "target": "concept_apperror_hierarchy"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/features/auth/exceptions.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_exceptions_UserAlreadyExists",
+      "target": "concept_apperror_hierarchy"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/features/auth/exceptions.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_exceptions_InvalidToken",
+      "target": "concept_apperror_hierarchy"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/features/auth/exceptions.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_exceptions_ForbiddenError",
+      "target": "concept_apperror_hierarchy"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/articles/service.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_service",
+      "target": "articles_repository"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/articles/service.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_service",
+      "target": "articles_schemas"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/articles/service.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_service",
+      "target": "articles_models"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/articles/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_router",
+      "target": "articles_service"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/features/articles/models.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_models",
+      "target": "tags_models"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/features/users/models.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "users_models",
+      "target": "articles_models"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/articles/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_router",
+      "target": "articles_schemas"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/articles/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_router",
+      "target": "articles_dependencies"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/tags/service.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "tags_service",
+      "target": "tags_repository"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/tags/service.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "tags_service",
+      "target": "tags_schemas"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/tags/service.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "tags_service",
+      "target": "tags_models"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/tags/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "tags_router",
+      "target": "tags_service"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/tags/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "tags_router",
+      "target": "tags_schemas"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/tags/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "tags_router",
+      "target": "tags_exceptions"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/tags/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "tags_router",
+      "target": "tags_dependencies"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/users/service.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "users_service",
+      "target": "users_schemas"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/users/service.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "users_service",
+      "target": "users_models"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/users/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "users_router",
+      "target": "users_exceptions"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/users/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "users_router",
+      "target": "users_dependencies"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/users/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "users_router",
+      "target": "users_repository"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/media/service.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "media_service",
+      "target": "media_repository"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/media/service.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "media_service",
+      "target": "media_models"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/media/service.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "media_service",
+      "target": "media_schemas"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/media/service.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "media_service",
+      "target": "media_exceptions"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/media/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "media_router",
+      "target": "media_service"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/media/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "media_router",
+      "target": "media_models"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/media/repository.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "media_repository",
+      "target": "media_models"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/media/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "media_router",
+      "target": "media_schemas"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/media/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "media_router",
+      "target": "media_exceptions"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/media/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "media_router",
+      "target": "media_dependencies"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/features/media/router.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "media_router",
+      "target": "media_repository"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/tests/conftest.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "tests_conftest",
+      "target": "test_auth_register"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/shared/dependencies.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "shared_dependencies",
+      "target": "shared_pagination"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme",
+      "target": "concept_router_service_repo_layering"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme",
+      "target": "concept_feature_modular_layout"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme",
+      "target": "concept_jwt_refresh_token_revocation"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme",
+      "target": "concept_author_snapshot_denormalization"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme",
+      "target": "concept_cursor_pagination"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme",
+      "target": "concept_apperror_hierarchy"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme",
+      "target": "concept_centralized_indexes"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "concept_router_service_repo_layering",
+      "target": "auth_service_AuthService"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "concept_router_service_repo_layering",
+      "target": "auth_repository_AuthRepository"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_md",
+      "target": "concept_router_service_repo_layering"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_md",
+      "target": "concept_feature_modular_layout"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_md",
+      "target": "concept_jwt_refresh_token_revocation"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/auth/repository.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "auth_repository_AuthRepository",
+      "target": "concept_jwt_refresh_token_revocation"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "concept_author_snapshot_denormalization",
+      "target": "articles_Exception"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_md",
+      "target": "concept_author_snapshot_denormalization"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_md",
+      "target": "concept_cursor_pagination"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_md",
+      "target": "concept_apperror_hierarchy"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_md",
+      "target": "concept_centralized_indexes"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/main.py",
+      "source_location": 15,
+      "weight": 1.0,
+      "source": "main_lifespan",
+      "target": "indexes_create_indexes"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/main.py",
+      "source_location": 15,
+      "weight": 1.0,
+      "source": "main_lifespan",
+      "target": "mongo_database"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/main.py",
+      "source_location": 22,
+      "weight": 1.0,
+      "source": "main_register_exception_handlers",
+      "target": "exceptions_register_exception_handlers"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/core/exceptions.py",
+      "source_location": 47,
+      "weight": 1.0,
+      "source": "exceptions_register_exception_handlers",
+      "target": "exceptions_AppError"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/core/exceptions.py",
+      "source_location": 26,
+      "weight": 1.0,
+      "source": "exceptions_app_error_handler",
+      "target": "exceptions_AppError"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/service.py",
+      "source_location": 32,
+      "weight": 1.0,
+      "source": "auth_service_AuthService",
+      "target": "auth_repository_AuthRepository"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/tests/conftest.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "tests_conftest",
+      "target": "auth_service_AuthService"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/service.py",
+      "source_location": 58,
+      "weight": 1.0,
+      "source": "auth_service_register",
+      "target": "auth_service_generate_username"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/service.py",
+      "source_location": 131,
+      "weight": 1.0,
+      "source": "auth_service_refresh",
+      "target": "auth_repository_token_storage"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/service.py",
+      "source_location": 115,
+      "weight": 1.0,
+      "source": "auth_service_refresh",
+      "target": "auth_repository_token_validation"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/service.py",
+      "source_location": 124,
+      "weight": 1.0,
+      "source": "auth_service_refresh",
+      "target": "auth_repository_token_revocation"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/service.py",
+      "source_location": 146,
+      "weight": 1.0,
+      "source": "auth_service_logout",
+      "target": "auth_repository_token_revocation"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/service.py",
+      "source_location": 37,
+      "weight": 1.0,
+      "source": "auth_service_generate_username",
+      "target": "username_generator_UsernameGenerator"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/tests/conftest.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "conftest_FakeRepository",
+      "target": "auth_repository_AuthRepository"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/tests/conftest.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "tests_conftest_FakeRepository",
+      "target": "auth_repository_AuthRepository"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/repository.py",
+      "source_location": null,
+      "weight": 0.75,
+      "source": "auth_repository_token_storage",
+      "target": "auth_repository_token_validation"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/repository.py",
+      "source_location": null,
+      "weight": 0.75,
+      "source": "auth_repository_token_storage",
+      "target": "auth_repository_token_revocation"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/repository.py",
+      "source_location": null,
+      "weight": 0.75,
+      "source": "auth_repository_token_validation",
+      "target": "auth_repository_token_revocation"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/db/indexes.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "indexes_create_indexes",
+      "target": "mongo_database"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/db/mongo.py",
+      "source_location": 16,
+      "weight": 1.0,
+      "source": "mongo_get_database",
+      "target": "mongo_database"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/tests/conftest.py",
+      "source_location": 79,
+      "weight": 1.0,
+      "source": "conftest_api_client",
+      "target": "conftest_FakeRepository"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "core_infrastructure",
+      "label": "Core Infrastructure Modules",
+      "nodes": [
+        "app_core_config",
+        "app_core_security",
+        "app_core_exceptions",
+        "app_core_logging",
+        "app_core_request_id"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/core/config.py"
+    },
+    {
+      "id": "comments_feature_stubs",
+      "label": "Comments Feature Stub Files",
+      "nodes": [
+        "app_features_comments_service",
+        "app_features_comments_models",
+        "app_features_comments_schemas",
+        "app_features_comments_router",
+        "app_features_comments_repository",
+        "app_features_comments_dependencies",
+        "app_features_comments_exceptions"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/comments/service.py"
+    },
+    {
+      "id": "auth_schemas_group",
+      "label": "Auth request/response schemas",
+      "nodes": [
+        "auth_schemas_RegisterRequest",
+        "auth_schemas_LoginRequest",
+        "auth_schemas_RefreshRequest",
+        "auth_schemas_TokenPair",
+        "auth_schemas_UserRead",
+        "auth_schemas_LogoutRequest"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/schemas.py"
+    },
+    {
+      "id": "auth_exceptions_group",
+      "label": "Auth domain exceptions",
+      "nodes": [
+        "auth_exceptions_InvalidCredentials",
+        "auth_exceptions_UserAlreadyExists",
+        "auth_exceptions_InvalidToken",
+        "auth_exceptions_ForbiddenError"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/exceptions.py"
+    },
+    {
+      "id": "auth_endpoints",
+      "label": "Auth API endpoints",
+      "nodes": [
+        "auth_router_register",
+        "auth_router_login",
+        "auth_router_refresh",
+        "auth_router_me",
+        "auth_router_logout"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py"
+    },
+    {
+      "id": "auth_flow",
+      "label": "Complete auth flow (register through logout)",
+      "nodes": [
+        "auth_router_register",
+        "auth_router_login",
+        "auth_router_refresh",
+        "auth_router_me",
+        "auth_router_logout",
+        "auth_service_AuthService",
+        "auth_repository_AuthRepository",
+        "auth_dependencies_get_current_user"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/auth/router.py"
+    },
+    {
+      "id": "auth_dependency_chain",
+      "label": "Auth dependency injection chain",
+      "nodes": [
+        "auth_dependencies_get_auth_service",
+        "auth_dependencies_get_current_user",
+        "auth_dependencies_require_role"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/dependencies.py"
+    },
+    {
+      "id": "architectural_concepts",
+      "label": "Core architectural patterns and rationale",
+      "nodes": [
+        "concept_router_service_repo_layering",
+        "concept_feature_modular_layout",
+        "concept_jwt_refresh_token_revocation",
+        "concept_author_snapshot_denormalization",
+        "concept_cursor_pagination",
+        "concept_apperror_hierarchy",
+        "concept_centralized_indexes"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md"
+    },
+    {
+      "id": "auth_token_lifecycle",
+      "label": "Refresh token lifecycle (store-validate-revoke)",
+      "nodes": [
+        "auth_repository_token_storage",
+        "auth_repository_token_validation",
+        "auth_repository_token_revocation"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "app/features/auth/repository.py"
+    },
+    {
+      "id": "auth_flows",
+      "label": "Authentication flows (register-login-refresh-logout)",
+      "nodes": [
+        "auth_service_register",
+        "auth_service_login",
+        "auth_service_refresh",
+        "auth_service_logout"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "app/features/auth/service.py"
+    },
+    {
+      "id": "error_handling_chain",
+      "label": "Error handling registration chain",
+      "nodes": [
+        "exceptions_AppError",
+        "exceptions_app_error_handler",
+        "exceptions_register_exception_handlers",
+        "main_register_exception_handlers"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "app/core/exceptions.py"
+    },
+    {
+      "id": "test_infrastructure",
+      "label": "Test fixture infrastructure",
+      "nodes": [
+        "conftest_FakeRepository",
+        "conftest_api_client"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/tests/conftest.py"
+    },
+    {
+      "id": "database_initialization",
+      "label": "Database initialization and indexing",
+      "nodes": [
+        "mongo_database",
+        "mongo_get_database",
+        "indexes_create_indexes",
+        "main_lifespan"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "app/main.py"
+    },
+    {
+      "id": "auth_endpoints",
+      "label": "Auth API endpoints",
+      "nodes": [
+        "auth_router_register",
+        "auth_router_login",
+        "auth_router_refresh",
+        "auth_router_me",
+        "auth_router_logout"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/router.py"
+    },
+    {
+      "id": "auth_schemas_group",
+      "label": "Auth request/response schemas",
+      "nodes": [
+        "auth_schemas_RegisterRequest",
+        "auth_schemas_LoginRequest",
+        "auth_schemas_RefreshRequest",
+        "auth_schemas_TokenPair",
+        "auth_schemas_UserRead",
+        "auth_schemas_LogoutRequest"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/schemas.py"
+    },
+    {
+      "id": "auth_exceptions_group",
+      "label": "Auth domain exceptions",
+      "nodes": [
+        "auth_exceptions_InvalidCredentials",
+        "auth_exceptions_UserAlreadyExists",
+        "auth_exceptions_InvalidToken",
+        "auth_exceptions_ForbiddenError"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/exceptions.py"
+    },
+    {
+      "id": "auth_dependency_chain",
+      "label": "Auth dependency injection chain",
+      "nodes": [
+        "auth_dependencies_get_auth_service",
+        "auth_dependencies_get_current_user",
+        "auth_dependencies_require_role"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/features/auth/dependencies.py"
+    },
+    {
+      "id": "db_connection_providers",
+      "label": "Database connection providers",
+      "nodes": [
+        "db_mongo_get_database",
+        "db_redis_get_redis"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/db/mongo.py"
+    },
+    {
+      "id": "auth_flow",
+      "label": "Complete auth flow (register through logout)",
+      "nodes": [
+        "auth_router_register",
+        "auth_router_login",
+        "auth_router_refresh",
+        "auth_router_me",
+        "auth_router_logout",
+        "auth_service_AuthService",
+        "auth_repository_AuthRepository",
+        "auth_dependencies_get_current_user"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/features/auth/router.py"
+    },
+    {
+      "id": "test_infrastructure",
+      "label": "Auth test infrastructure",
+      "nodes": [
+        "tests_conftest",
+        "tests_conftest_FakeRepository",
+        "test_auth_register"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/tests/conftest.py"
+    },
+    {
+      "id": "architectural_concepts",
+      "label": "Core architectural patterns and rationale",
+      "nodes": [
+        "concept_router_service_repo_layering",
+        "concept_feature_modular_layout",
+        "concept_jwt_refresh_token_revocation",
+        "concept_author_snapshot_denormalization",
+        "concept_cursor_pagination",
+        "concept_apperror_hierarchy",
+        "concept_centralized_indexes"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md"
+    }
+  ],
+  "built_at_commit": "e5a63520f508ea2d2415d8c02579740083eb1eed"
+}
