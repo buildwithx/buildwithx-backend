@@ -1,0 +1,37 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017
+      - REDIS_URL=redis://redis:6379/0
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:8f4e3f2cb4c5f5a94d17d2f8f6c7b9d1b7a5c3d8e2f4a6b9}
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - buildwithx-network
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - buildwithx-network
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - buildwithx-network
+
+networks:
+  buildwithx-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:

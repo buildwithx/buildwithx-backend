@@ -7,3 +7,8 @@
 .env.*
 
 __pycache__
+
+# agents
+graphify-out/
+.opencode/
+.omo/

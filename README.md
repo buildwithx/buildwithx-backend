@@ -4,6 +4,62 @@
 
 ---
 
+## Getting started
+
+Requires Python ≥ 3.14 and [`uv`](https://docs.astral.sh/uv/) (the package manager — not pip).
+
+### 1. Install dependencies
+
+```bash
+uv sync
+```
+
+### 2. Configure environment
+
+The app reads its config (MongoDB, Redis, JWT, …) from a local `.env` file via `pydantic-settings`. Required vars:
+
+| Var | Purpose |
+|---|---|
+| `MONGO_URI` | Mongo connection string (e.g. `mongodb+srv://…` or `mongodb://localhost:27017`) |
+| `MONGO_DATABASE` | Database name |
+| `REDIS_URL` | Redis connection string (cache, rate limiting, refresh-token store) |
+| `JWT_SECRET_KEY` | Secret for signing access/refresh tokens |
+| `ACCESS_TOKEN_EXPIRE_MINUTES` | Access token lifetime (default `15`) |
+| `REFRESH_TOKEN_EXPIRE_DAYS` | Refresh token lifetime (default `30`) |
+
+`.env` is gitignored — don't commit real credentials.
+
+### 3. Run the dev server
+
+```bash
+uv run uvicorn app.main:app --reload
+```
+
+- Health check: `http://localhost:8000/healthz` → `{"status": "ok"}`
+- Interactive API docs (Swagger UI): `http://localhost:8000/docs`
+
+The server connects to Mongo/Redis from `.env` and creates indexes on startup. If your URLs point at hosted instances, no local infrastructure is needed.
+
+### Alternative: Docker Compose
+
+Runs the app + Mongo + Redis together in containers:
+
+```bash
+docker compose up --build   # app :8000, mongo :27017, redis :6379
+```
+
+### Tests & quality gates
+
+```bash
+uv run pytest        # tests (FakeRepository fixtures — no Docker required)
+uv run ruff check .  # lint
+uv run mypy app      # typecheck
+```
+
+Order expected by pre-commit hooks and CI: `uv run ruff format .` → `uv run ruff check .` → `uv run mypy app` → `uv run pytest`.
+
+---
+
 ## Architecture
 
 ```
@@ -173,7 +229,6 @@ Add later when scaling:
 - API key support
 - Audit logs
 - Distributed tracing
-- Docker Compose local stack
 
 ## CI/CD
 
