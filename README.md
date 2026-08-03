@@ -33,6 +33,8 @@ The app reads its config (MongoDB, Redis, JWT, …) from a local `.env` file via
 
 ```bash
 uv run uvicorn app.main:app --reload
+# or
+bash start.sh
 ```
 
 - Health check: `http://localhost:8000/healthz` → `{"status": "ok"}`
